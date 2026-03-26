@@ -1,0 +1,244 @@
+/* ── Rethink Sans Font ── */
+@font-face { font-family: "Rethink Sans"; src: url("/fonts/RethinkSans-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rethink Sans"; src: url("/fonts/RethinkSans-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rethink Sans"; src: url("/fonts/RethinkSans-SemiBold.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rethink Sans"; src: url("/fonts/RethinkSans-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+
+@import "tailwindcss";
+
+/* ── Cueva Design System — Light Mode ── */
+@layer base {
+  * { font-family: "Rethink Sans", sans-serif; }
+
+  :root {
+    --radius: 10px;
+
+    --green: #a0e099;
+    --green-darker: #83cc7a;
+    --green-darker-ext: #2c5227;
+    --green-lighter: rgba(131, 204, 122, 0.32);
+    --green-lighter-ext: rgba(131, 204, 122, 0.24);
+    --primary: var(--green);
+
+    --gradient-one: rgba(184, 255, 187, 0.32);
+    --gradient-two: rgba(209, 252, 255, 0.32);
+    --gradient-three: rgba(228, 252, 181, 0.32);
+
+    --element-high: #20291f;
+    --element-high-hover: #435242;
+    --element-mid: #647063;
+    --element-low: #9ca89b;
+    --element-disabled: #aab8a9;
+
+    --outline: #dde5dc;
+    --outline-accent: #ced6ce;
+
+    --overlay: #f0f5f0;
+    --overlay-accent: #e9f0e9;
+
+    --surface: #ffffff;
+    --surface-accent: #f8faf7;
+    --background: #f8faf7;
+
+    --success-lighter-ext: rgba(0, 175, 117, 0.12);
+    --success-lighter: #2dcc92;
+    --success-base: #00af75;
+    --success-dark: #059669;
+    --success-darker-ext: #022c22;
+
+    --info-lighter-ext: rgba(59, 130, 246, 0.12);
+    --info-lighter: #60a5fa;
+    --info-base: #3b82f6;
+    --info-dark: #2563eb;
+
+    --warning-lighter-ext: rgba(245, 158, 11, 0.12);
+    --warning-lighter: #fbbf24;
+    --warning-base: #f59e0b;
+    --warning-dark: #d97706;
+
+    --error-lighter-ext: rgba(237, 90, 70, 0.08);
+    --error-lighter: #f68373;
+    --error-base: #ed5a46;
+    --error-dark: #da3d28;
+
+    --black: #20291f;
+    --white: #fdfffc;
+    --black-opacity-mid: rgba(32, 41, 31, 0.24);
+    --black-opacity-low: rgba(32, 41, 31, 0.12);
+
+    --shadow-low: 0px 1px 2px 0px rgba(32, 41, 31, 0.08);
+    --shadow-mid: 0px 16px 32px -12px rgba(32, 41, 31, 0.06);
+    --shadow-high: 0px 20px 40px -8px rgba(32, 41, 31, 0.08);
+
+    --scrollbar-color: var(--green-darker);
+
+    /* Typography */
+    --font-size-display-lg: 36px; --line-height-display-lg: 48px; --font-weight-display-lg: 500; --letter-spacing-display-lg: -0.02em;
+    --font-size-display-md: 32px; --line-height-display-md: 42px; --font-weight-display-md: 500; --letter-spacing-display-md: -0.02em;
+    --font-size-display-sm: 26px; --line-height-display-sm: 38px; --font-weight-display-sm: 500; --letter-spacing-display-sm: -0.02em;
+    --font-size-headline-lg: 28px; --line-height-headline-lg: 36px; --font-weight-headline-lg: 500; --letter-spacing-headline-lg: -0.02em;
+    --font-size-headline-md: 26px; --line-height-headline-md: 32px; --font-weight-headline-md: 500; --letter-spacing-headline-md: -0.02em;
+    --font-size-headline-sm: 24px; --line-height-headline-sm: 32px; --font-weight-headline-sm: 500; --letter-spacing-headline-sm: -0.02em;
+    --font-size-title-lg: 18px; --line-height-title-lg: 24px; --font-weight-title-lg: 600; --letter-spacing-title-lg: -0.014em;
+    --font-size-title-md: 16px; --line-height-title-md: 22px; --font-weight-title-md: 600; --letter-spacing-title-md: -0.014em;
+    --font-size-title-sm: 14px; --line-height-title-sm: 20px; --font-weight-title-sm: 600; --letter-spacing-title-sm: -0.014em;
+    --font-size-subhead-lg: 22px; --line-height-subhead-lg: 26px; --font-weight-subhead-lg: 500; --letter-spacing-subhead-lg: -0.02em;
+    --font-size-subhead-md: 20px; --line-height-subhead-md: 26px; --font-weight-subhead-md: 500; --letter-spacing-subhead-md: -0.02em;
+    --font-size-subhead-sm: 16px; --line-height-subhead-sm: 20px; --font-weight-subhead-sm: 500; --letter-spacing-subhead-sm: -0.02em;
+    --font-size-body-lg: 18px; --line-height-body-lg: 24px; --font-weight-body-lg: 400; --letter-spacing-body-lg: -0.01em;
+    --font-size-body-md: 16px; --line-height-body-md: 22px; --font-weight-body-md: 400; --letter-spacing-body-md: -0.01em;
+    --font-size-body-sm: 14px; --line-height-body-sm: 20px; --font-weight-body-sm: 400; --letter-spacing-body-sm: -0.01em;
+    --font-size-label-lg: 13px; --line-height-label-lg: 16px; --font-weight-label-lg: 400; --letter-spacing-label-lg: -0.01em;
+    --font-size-label-md: 10px; --line-height-label-md: 14px; --font-weight-label-md: 400; --letter-spacing-label-md: -0.01em;
+    --font-size-label-sm: 8px; --line-height-label-sm: 12px; --font-weight-label-sm: 400; --letter-spacing-label-sm: -0.01em;
+    --font-size-overline-sm: 11px; --line-height-overline-sm: 22px; --font-weight-overline-sm: 700; --letter-spacing-overline-sm: 0.01em;
+    --font-size-amount-lg: 28px; --line-height-amount-lg: 28px; --font-weight-amount-lg: 600; --letter-spacing-amount-lg: -0.02em;
+    --font-size-amount-md: 24px; --line-height-amount-md: 24px; --font-weight-amount-md: 600; --letter-spacing-amount-md: -0.02em;
+    --font-size-amount-sm: 20px; --line-height-amount-sm: 20px; --font-weight-amount-sm: 600; --letter-spacing-amount-sm: -0.02em;
+    --font-size-body-sm-w-md: 14px; --line-height-body-sm-w-md: 20px; --font-weight-body-sm-w-md: 500; --letter-spacing-body-sm-w-md: -0.01em;
+    --font-size-label-lg-w-md: 13px; --line-height-label-lg-w-md: 16px; --font-weight-label-lg-w-md: 500; --letter-spacing-label-lg-w-md: -0.01em;
+    --font-size-label-lg-w-semibold: 13px; --line-height-label-lg-w-semibold: 16px; --font-weight-label-lg-w-semibold: 600; --letter-spacing-label-lg-w-semibold: -0.01em;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --font-size-display-lg: 64px; --line-height-display-lg: 72px;
+      --font-size-display-md: 56px; --line-height-display-md: 68px;
+      --font-size-display-sm: 40px; --line-height-display-sm: 48px;
+      --font-size-headline-lg: 40px; --line-height-headline-lg: 48px;
+      --font-size-headline-md: 32px; --line-height-headline-md: 40px;
+      --font-size-headline-sm: 26px; --line-height-headline-sm: 34px;
+      --font-size-subhead-lg: 32px; --line-height-subhead-lg: 40px;
+      --font-size-subhead-md: 24px; --line-height-subhead-md: 32px;
+      --font-size-subhead-sm: 20px; --line-height-subhead-sm: 26px;
+    }
+  }
+}
+
+/* ── TW4 Theme Tokens ── */
+@theme {
+  --font-sans: "Rethink Sans", sans-serif;
+
+  --color-green: var(--green);
+  --color-green-darker: var(--green-darker);
+  --color-green-darker-ext: var(--green-darker-ext);
+  --color-green-lighter: var(--green-lighter);
+  --color-green-lighter-ext: var(--green-lighter-ext);
+
+  --color-el-high: var(--element-high);
+  --color-el-mid: var(--element-mid);
+  --color-el-low: var(--element-low);
+  --color-el-disabled: var(--element-disabled);
+
+  --color-outline: var(--outline);
+  --color-outline-accent: var(--outline-accent);
+  --color-overlay: var(--overlay);
+  --color-overlay-accent: var(--overlay-accent);
+  --color-surface: var(--surface);
+  --color-surface-accent: var(--surface-accent);
+  --color-bg: var(--background);
+
+  --color-success-base: var(--success-base);
+  --color-success-lighter: var(--success-lighter);
+  --color-success-lighter-ext: var(--success-lighter-ext);
+  --color-success-dark: var(--success-dark);
+  --color-success-darker-ext: var(--success-darker-ext);
+  --color-info-base: var(--info-base);
+  --color-info-lighter: var(--info-lighter);
+  --color-info-lighter-ext: var(--info-lighter-ext);
+  --color-warning-base: var(--warning-base);
+  --color-warning-lighter: var(--warning-lighter);
+  --color-warning-lighter-ext: var(--warning-lighter-ext);
+  --color-error-base: var(--error-base);
+  --color-error-lighter: var(--error-lighter);
+  --color-error-lighter-ext: var(--error-lighter-ext);
+
+  --color-black: var(--black);
+  --color-white: var(--white);
+
+  --shadow-low: var(--shadow-low);
+  --shadow-mid: var(--shadow-mid);
+  --shadow-high: var(--shadow-high);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ── Typography utility classes (Cueva) ── */
+@layer utilities {
+  .display-lg { font-size: var(--font-size-display-lg); line-height: var(--line-height-display-lg); font-weight: var(--font-weight-display-lg); letter-spacing: var(--letter-spacing-display-lg); }
+  .display-md { font-size: var(--font-size-display-md); line-height: var(--line-height-display-md); font-weight: var(--font-weight-display-md); letter-spacing: var(--letter-spacing-display-md); }
+  .display-sm { font-size: var(--font-size-display-sm); line-height: var(--line-height-display-sm); font-weight: var(--font-weight-display-sm); letter-spacing: var(--letter-spacing-display-sm); }
+  .headline-lg { font-size: var(--font-size-headline-lg); line-height: var(--line-height-headline-lg); font-weight: var(--font-weight-headline-lg); letter-spacing: var(--letter-spacing-headline-lg); }
+  .headline-md { font-size: var(--font-size-headline-md); line-height: var(--line-height-headline-md); font-weight: var(--font-weight-headline-md); letter-spacing: var(--letter-spacing-headline-md); }
+  .headline-sm { font-size: var(--font-size-headline-sm); line-height: var(--line-height-headline-sm); font-weight: var(--font-weight-headline-sm); letter-spacing: var(--letter-spacing-headline-sm); }
+  .title-lg { font-size: var(--font-size-title-lg); line-height: var(--line-height-title-lg); font-weight: var(--font-weight-title-lg); letter-spacing: var(--letter-spacing-title-lg); }
+  .title-md { font-size: var(--font-size-title-md); line-height: var(--line-height-title-md); font-weight: var(--font-weight-title-md); letter-spacing: var(--letter-spacing-title-md); }
+  .title-sm { font-size: var(--font-size-title-sm); line-height: var(--line-height-title-sm); font-weight: var(--font-weight-title-sm); letter-spacing: var(--letter-spacing-title-sm); }
+  .subhead-lg { font-size: var(--font-size-subhead-lg); line-height: var(--line-height-subhead-lg); font-weight: var(--font-weight-subhead-lg); letter-spacing: var(--letter-spacing-subhead-lg); }
+  .subhead-md { font-size: var(--font-size-subhead-md); line-height: var(--line-height-subhead-md); font-weight: var(--font-weight-subhead-md); letter-spacing: var(--letter-spacing-subhead-md); }
+  .subhead-sm { font-size: var(--font-size-subhead-sm); line-height: var(--line-height-subhead-sm); font-weight: var(--font-weight-subhead-sm); letter-spacing: var(--letter-spacing-subhead-sm); }
+  .body-lg { font-size: var(--font-size-body-lg); line-height: var(--line-height-body-lg); font-weight: var(--font-weight-body-lg); letter-spacing: var(--letter-spacing-body-lg); }
+  .body-md { font-size: var(--font-size-body-md); line-height: var(--line-height-body-md); font-weight: var(--font-weight-body-md); letter-spacing: var(--letter-spacing-body-md); }
+  .body-sm { font-size: var(--font-size-body-sm); line-height: var(--line-height-body-sm); font-weight: var(--font-weight-body-sm); letter-spacing: var(--letter-spacing-body-sm); }
+  .body-sm-w-md { font-size: var(--font-size-body-sm-w-md); line-height: var(--line-height-body-sm-w-md); font-weight: var(--font-weight-body-sm-w-md); letter-spacing: var(--letter-spacing-body-sm-w-md); }
+  .label-lg { font-size: var(--font-size-label-lg); line-height: var(--line-height-label-lg); font-weight: var(--font-weight-label-lg); letter-spacing: var(--letter-spacing-label-lg); }
+  .label-lg-w-md { font-size: var(--font-size-label-lg-w-md); line-height: var(--line-height-label-lg-w-md); font-weight: var(--font-weight-label-lg-w-md); letter-spacing: var(--letter-spacing-label-lg-w-md); }
+  .label-lg-w-semibold { font-size: var(--font-size-label-lg-w-semibold); line-height: var(--line-height-label-lg-w-semibold); font-weight: var(--font-weight-label-lg-w-semibold); letter-spacing: var(--letter-spacing-label-lg-w-semibold); }
+  .label-md { font-size: var(--font-size-label-md); line-height: var(--line-height-label-md); font-weight: var(--font-weight-label-md); letter-spacing: var(--letter-spacing-label-md); }
+  .label-sm { font-size: var(--font-size-label-sm); line-height: var(--line-height-label-sm); font-weight: var(--font-weight-label-sm); letter-spacing: var(--letter-spacing-label-sm); }
+  .overline-sm { font-size: var(--font-size-overline-sm); line-height: var(--line-height-overline-sm); font-weight: var(--font-weight-overline-sm); letter-spacing: var(--letter-spacing-overline-sm); }
+  .amount-lg { font-size: var(--font-size-amount-lg); line-height: var(--line-height-amount-lg); font-weight: var(--font-weight-amount-lg); letter-spacing: var(--letter-spacing-amount-lg); }
+  .amount-md { font-size: var(--font-size-amount-md); line-height: var(--line-height-amount-md); font-weight: var(--font-weight-amount-md); letter-spacing: var(--letter-spacing-amount-md); }
+  .amount-sm { font-size: var(--font-size-amount-sm); line-height: var(--line-height-amount-sm); font-weight: var(--font-weight-amount-sm); letter-spacing: var(--letter-spacing-amount-sm); }
+
+  .green-gradient { background: linear-gradient(93deg, var(--gradient-one) 0%, var(--gradient-two) 75.47%, var(--gradient-three) 100%); }
+
+  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--scrollbar-color) transparent; }
+  .custom-scrollbar::-webkit-scrollbar { width: 4px; background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--scrollbar-color); border-radius: 4px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: var(--green); }
+}
+
+/* ── Button system (Cueva — plain CSS) ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius); transition: all 200ms ease-out;
+  padding: 10px 12px; gap: 2px; cursor: pointer;
+  font-size: var(--font-size-title-sm); line-height: var(--line-height-title-sm);
+  font-weight: var(--font-weight-title-sm); letter-spacing: var(--letter-spacing-title-sm);
+  --btn-bg: var(--element-high); --btn-hover: var(--element-mid);
+  --btn-border: var(--outline); --text-color: var(--surface);
+}
+.btn-sm {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: calc(var(--radius) - 2px); transition: all 200ms ease-out;
+  padding: 7px 8px; gap: 2px; cursor: pointer;
+  font-size: var(--font-size-label-lg-w-semibold); line-height: var(--line-height-label-lg-w-semibold);
+  font-weight: var(--font-weight-label-lg-w-semibold); letter-spacing: var(--letter-spacing-label-lg-w-semibold);
+  --btn-bg: var(--element-high); --btn-hover: var(--element-mid);
+  --btn-border: var(--outline); --text-color: var(--surface);
+}
+.btn-primary, .btn-sm.btn-primary {
+  --btn-bg: var(--green-darker-ext); --btn-border: var(--green-darker-ext);
+  --btn-hover: var(--green-darker); --text-color: var(--white);
+}
+.btn-danger, .btn-sm.btn-danger {
+  --btn-bg: var(--error-base); --btn-border: var(--error-base);
+  --btn-hover: var(--error-lighter); --text-color: var(--white);
+}
+.contained { background: var(--btn-bg); color: var(--text-color); }
+.contained:hover { background: var(--btn-hover); }
+.outlined { border: 1px solid var(--btn-border); color: var(--btn-bg); background: transparent; }
+.outlined:hover { color: var(--btn-hover); border-color: var(--btn-hover); }
+.ghost { background: transparent; color: var(--element-mid); }
+.ghost:hover { color: var(--element-high); }
+
+/* ── Global scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--outline-accent); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green-darker); }

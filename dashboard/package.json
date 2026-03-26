@@ -1,0 +1,56 @@
+{
+  "name": "eddie-dashboard",
+  "version": "1.0.0",
+  "description": "Eddie Mission Control — AI-powered marketing agent dashboard with pixel art office visualization",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "author": "OpenClaw Team",
+  "keywords": [
+    "ai-agents",
+    "marketing",
+    "dashboard",
+    "pixel-art",
+    "anthropic",
+    "claude"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n web,api -c cyan,magenta \"vite --host 127.0.0.1 --port 5678\" \"nodemon --watch server --ext ts --exec tsx server/index.ts\"",
+    "build": "tsc -b && vite build",
+    "start": "tsx server/index.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
+    "@google/generative-ai": "^0.24.1",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "^5.1.0",
+    "lucide-react": "^0.511.0",
+    "openai": "^6.32.0",
+    "pdfkit": "^0.18.0",
+    "pixi.js": "^8.17.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/cors": "^2.8.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@types/pdfkit": "^0.17.5",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.0",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "~5.8.0",
+    "vite": "^6.3.0"
+  }
+}

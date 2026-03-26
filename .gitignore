@@ -1,0 +1,41 @@
+# Environment
+.env
+
+# Dependencies
+node_modules/
+
+# System files
+.DS_Store
+.pi/
+.openclaw/
+.claude/
+
+# Agent memory (session-specific)
+memory/
+
+# SQLite databases
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Generated content (real drafts and images are user-specific)
+content/drafts/*.md
+content/drafts/*.pptx
+content/drafts/*.cjs
+content/drafts/package.json
+content/drafts/package-lock.json
+content/images/*
+!content/images/.gitkeep
+content/published/*
+!content/published/.gitkeep
+content/preview.html
+content/linkedin-post-ai-office.md
+
+# Keep example files
+!content/drafts/EXAMPLE-*.md
+
+# Real brand assets (users should add their own)
+paydece-logo.png
+
+# Build output
+dist/

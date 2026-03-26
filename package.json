@@ -1,0 +1,25 @@
+{
+  "name": "eddie-marketing-agent",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Eddie - AI Marketing Agent for OpenClaw. Generates content, images, and publishes to X, LinkedIn, TikTok automatically.",
+  "scripts": {
+    "generate-images": "node scripts/generate-images.mjs",
+    "generate-ai-images": "node scripts/generate-image-ai.mjs",
+    "publish": "node scripts/publish.mjs",
+    "publish:twitter": "node scripts/publish-twitter.mjs",
+    "publish:linkedin": "node scripts/publish-linkedin.mjs",
+    "publish:linkedin-carousel": "node scripts/publish-linkedin-carousel.mjs",
+    "notify": "node scripts/notify-slack.mjs"
+  },
+  "keywords": ["ai", "marketing", "agent", "openclaw", "twitter", "linkedin", "automation"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/webhook": "^7.0.7",
+    "dotenv": "^17.3.1",
+    "pdf-lib": "^1.17.1",
+    "playwright": "^1.58.2",
+    "twitter-api-v2": "^1.29.0"
+  }
+}
