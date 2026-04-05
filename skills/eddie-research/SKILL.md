@@ -1,99 +1,95 @@
 ---
 name: eddie-research
-description: "Run Scout research agent — investigates a topic or niche via web search + AI analysis, saves findings to Eddie's database."
-allowed-tools: [Bash, Read, Write, Glob, Grep, Agent, AskUserQuestion]
+description: "Run Scout research agent — investigates any topic via web search + analysis, saves findings to Eddie's database."
+allowed-tools: [Bash, Read, Write, Glob, Grep, Agent, WebSearch, WebFetch, AskUserQuestion]
 ---
 
 # /eddie-research
 
-Scout, the research agent. Searches the web for a topic, analyzes findings with AI, and saves them to Eddie's database for later content generation.
+Scout, the research agent. YOU (Claude Code) are Scout. Use your native WebSearch to investigate topics, analyze findings, and save them to Eddie's database via the API.
+
+Do NOT delegate to the Express server's research agent. You have better tools: WebSearch (real search), WebFetch (read full pages), and Opus-level analysis. Use the API only to save results.
 
 ## Step 1: Ensure Server Running
-
-Run this health check. If it fails, start the server:
 
 ```bash
 curl -sf http://127.0.0.1:5679/api/health >/dev/null 2>&1 || "$(git rev-parse --show-toplevel 2>/dev/null)/dashboard/../.claude/skills/eddie/bin/eddie-server" start
 ```
 
-If the server fails to start, tell the user:
-- "Eddie server couldn't start. Run `eddie-server start` manually or check `/tmp/eddie-server.log`."
-- Common causes: Node 22+ not installed, dependencies not installed (`cd dashboard && pnpm install`), missing `.env` file.
-
 ## Step 2: Parse User Input
 
-The user provides a topic or niche as the command argument. Examples:
-- `/eddie-research "fintech AI LATAM"`
+The user provides a topic as the command argument. Examples:
+- `/eddie-research "AI agents para ecommerce en LATAM"`
 - `/eddie-research competencia Odoo AI`
-- `/eddie-research` (no args — prompt for topic)
+- `/eddie-research tendencias fintech argentina 2026`
+- `/eddie-research` (no args — ask what to investigate)
 
-If no argument provided, ask: "What topic should Scout investigate?"
+If no argument, ask: "What topic should Scout investigate?"
 
-## Step 3: Run Research Pipeline
+## Step 3: Research with WebSearch
 
-Use the research pipeline endpoint which supports topic-based research:
+Use the WebSearch tool to investigate the topic. Do 3-5 searches with different angles:
+
+1. **Direct search** on the topic
+2. **Competitors/players** in the space
+3. **Recent news** (add "2026" or "último mes" to the query)
+4. **Trends/analysis** (add "tendencias" or "analysis")
+
+For each search, analyze the results and extract key insights:
+- What companies are doing in this space
+- Recent product launches or funding
+- Market trends and data points
+- Competitive dynamics
+
+If a result looks especially relevant, use WebFetch to read the full page for deeper analysis.
+
+## Step 4: Save Findings to Eddie
+
+For each meaningful finding (aim for 3-8 findings), save it to Eddie's database:
 
 ```bash
-curl -s -X POST http://127.0.0.1:5679/api/research-pipeline/run \
+curl -s -X POST http://127.0.0.1:5679/api/research \
   -H "Content-Type: application/json" \
-  -d '{"niche":"<USER_TOPIC>","competitors":[],"platforms":["linkedin","x"]}'
+  -d '{
+    "title": "<FINDING_TITLE>",
+    "summary": "<1-2 sentence summary>",
+    "content": "<full analysis, 2-3 paragraphs>",
+    "tags": "<comma,separated,tags>",
+    "category": "<one of: competencia, tendencia, mercado, producto, general>",
+    "sourceUrl": "<source URL if available>",
+    "brandName": "<company/brand name if relevant>"
+  }'
 ```
 
-This returns a job ID: `{ "jobId": N, "status": "running" }`
-
-## Step 4: Poll for Results
-
-The pipeline runs asynchronously. Poll every 5 seconds until complete:
-
-```bash
-curl -s http://127.0.0.1:5679/api/research-pipeline/jobs/<JOB_ID>
-```
-
-Check the `status` field:
-- `"running"` — still working, check `currentStep` for progress
-- `"completed"` — done, results are in the `results` array
-- `"failed"` — check `error` field
-
-Use a maximum of 24 polls (2 minutes). Between polls, report progress to the user:
-- "Scout is searching... (step: <currentStep>)"
+Categories:
+- **competencia** — competitor analysis, what others are doing
+- **tendencia** — market trends, industry direction
+- **mercado** — market data, sizing, regulations
+- **producto** — product launches, features, pricing
+- **general** — anything else relevant
 
 ## Step 5: Report Results
 
-When the job completes, show the user:
+After saving all findings, show the user:
 
-1. **Summary:** "Scout found N results for '<topic>'"
-2. **For each result:** Show the type and a brief summary of the data
-3. **Suggest next step:** "Run `/eddie-content` to generate posts from these findings"
+1. **Summary:** "Scout investigated '<topic>' and found N insights"
+2. **For each finding:** Title, category, and 1-line summary
+3. **Key takeaways:** 2-3 bullet points synthesizing the research
+4. **Sources:** List the URLs used (from WebSearch results)
+5. **Suggest next step:** "Run `/eddie-content` to generate posts from these findings"
 
-If the pipeline is not available or returns an error, fall back to the research agent:
+## Research Quality Guidelines
 
-```bash
-curl -s -X POST http://127.0.0.1:5679/api/research/agent/run \
-  -H "Content-Type: application/json" \
-  -d '{"configIds":[]}'
-```
-
-This is an SSE endpoint. Use `timeout: 120000` on the Bash call. Parse the SSE events (lines starting with `data: `) to extract results.
-
-## Step 6: Also Check Direct Research
-
-After the pipeline/agent finishes, fetch the latest research entries to show what was saved:
-
-```bash
-curl -s http://127.0.0.1:5679/api/research | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-for r in data[:5]:
-    print(f\"  - {r.get('title', 'Untitled')} ({r.get('category', 'general')})\")
-print(f'\nTotal: {len(data)} research entries in database')
-"
-```
+- Be specific. "Mercado Libre launched AI-powered seller tools in March 2026" beats "companies are using AI"
+- Include numbers when available: funding amounts, user counts, growth rates
+- Note the source credibility: established media vs blog post vs press release
+- Focus on actionable insights, not general knowledge
+- Write in Spanish for the database entries (the user's audience is LATAM)
 
 ## Error Handling
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| Connection refused | Server not running | Run: `.claude/skills/eddie/bin/eddie-server start` |
-| 500 Internal Server Error | API key or config issue | Check: `cat /tmp/eddie-server.log \| tail -20` |
-| Timeout (>2 min) | Complex research taking long | Check status: `curl -s http://127.0.0.1:5679/api/research-pipeline/jobs` |
-| Empty results | No matching content found | Try broader topic or check research config: `curl -s http://127.0.0.1:5679/api/research-config` |
+| Connection refused on save | Server not running | Run: `.claude/skills/eddie/bin/eddie-server start` |
+| WebSearch returns nothing | Bad query or rate limit | Try broader terms or different angle |
+| 500 on POST /api/research | DB issue | Check: `cat /tmp/eddie-server.log \| tail -20` |
