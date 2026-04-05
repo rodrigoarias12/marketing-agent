@@ -15,6 +15,7 @@ Eddie Mission Control orchestrator. Routes your request to the right specialized
 | 1 | `/eddie-1-research` | Scout | Research any topic via web search + AI analysis |
 | 2 | `/eddie-2-content-writer` | Pixel | Generate posts from a topic, idea, or research |
 | 3 | `/eddie-3-publish` | Link | Approve and publish content to LinkedIn/X |
+| 4 | `/eddie-4-video` | Director | Generate HeyGen avatar videos from topics or posts |
 | — | `/eddie-prospects` | Pipeline | View/manage prospect pipeline and follow-ups |
 | — | `/eddie-dashboard` | UI | Start dashboard, show KPIs, open browser |
 
@@ -32,6 +33,7 @@ Instead, understand the intent:
 - **Research/investigation/competitor analysis/market study** → invoke `/eddie-1-research` via the Skill tool
 - **Content creation/posts/drafts/write/generate** → invoke `/eddie-2-content-writer` via the Skill tool
 - **Publish/post to LinkedIn/Twitter/share/go live** → invoke `/eddie-3-publish` via the Skill tool
+- **Video/clip/TikTok/Reels/avatar/HeyGen** → invoke `/eddie-4-video` via the Skill tool
 - **Prospects/leads/pipeline/follow-up/outreach/CRM** → invoke `/eddie-prospects` via the Skill tool
 - **Dashboard/KPIs/metrics/open/show me/status** → invoke `/eddie-dashboard` via the Skill tool
 - **Anything else** → use Eddie Chat (Step 3)
@@ -63,8 +65,9 @@ After any action completes, suggest the logical next step:
 | After | Suggest |
 |-------|---------|
 | Research | "Next: `/eddie-2-content-writer` to generate posts from these findings" |
-| Content | "Next: review the drafts, then `/eddie-3-publish` to go live" |
+| Content | "Next: review the drafts, then `/eddie-3-publish` to go live. Or `/eddie-4-video` to make a video." |
 | Publish | "Check `/eddie-dashboard` for updated KPIs" |
+| Video | "Share on TikTok/Reels. Check `/eddie-dashboard` for all content." |
 | Prospects | "Try `/eddie-1-research` on prospects' industries for targeted content" |
 | Dashboard | "All agents ready. Start with `/eddie-1-research \"<topic>\"`" |
 
@@ -73,6 +76,7 @@ After any action completes, suggest the logical next step:
 - `/eddie research fintech AI in LATAM` → routes to /eddie-1-research
 - `/eddie generate 5 LinkedIn posts` → routes to /eddie-2-content-writer
 - `/eddie publish today's posts` → routes to /eddie-3-publish
+- `/eddie make a video about AI agents` → routes to /eddie-4-video
 - `/eddie show me the pipeline` → routes to /eddie-prospects
 - `/eddie how many posts did we publish this week?` → uses Eddie Chat
 - `/eddie` (no args) → shows available commands and current status
