@@ -1,10 +1,10 @@
 ---
-name: eddie-publish
-description: "Run Link publish agent — approves and publishes content to LinkedIn, X, or TikTok from Eddie's content pipeline."
+name: eddie-3-publish
+description: "Step 3: Link publish — approves and publishes content to LinkedIn, X, or TikTok."
 allowed-tools: [Bash, Read, Write, AskUserQuestion]
 ---
 
-# /eddie-publish
+# /eddie-3-publish
 
 Link, the publish agent. Publishes approved content to social media platforms (LinkedIn, X, TikTok).
 

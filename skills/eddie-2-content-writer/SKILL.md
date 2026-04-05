@@ -1,10 +1,10 @@
 ---
-name: eddie-content-writer
-description: "Run Pixel content writer — generates LinkedIn/X posts from a topic, idea, or research findings."
+name: eddie-2-content-writer
+description: "Step 2: Pixel content writer — generates LinkedIn/X posts from a topic, idea, or research."
 allowed-tools: [Bash, Read, Write, Glob, Grep, AskUserQuestion]
 ---
 
-# /eddie-content-writer
+# /eddie-2-content-writer
 
 Pixel, the content agent. Two modes:
 

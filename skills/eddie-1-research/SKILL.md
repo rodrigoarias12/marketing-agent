@@ -1,10 +1,10 @@
 ---
-name: eddie-research
-description: "Run Scout research agent — investigates any topic via web search + analysis, saves findings to Eddie's database."
+name: eddie-1-research
+description: "Step 1: Scout research — investigates any topic via web search + analysis, saves findings to Eddie."
 allowed-tools: [Bash, Read, Write, Glob, Grep, Agent, WebSearch, WebFetch, AskUserQuestion]
 ---
 
-# /eddie-research
+# /eddie-1-research
 
 Scout, the research agent. YOU (Claude Code) are Scout. Use your native WebSearch to investigate topics, analyze findings, and save them to Eddie's database via the API.
 
@@ -76,7 +76,7 @@ After saving all findings, show the user:
 2. **For each finding:** Title, category, and 1-line summary
 3. **Key takeaways:** 2-3 bullet points synthesizing the research
 4. **Sources:** List the URLs used (from WebSearch results)
-5. **Suggest next step:** "Run `/eddie-content` to generate posts from these findings"
+5. **Suggest next step:** "Run `/eddie-2-content-writer` to generate posts from these findings"
 
 ## Research Quality Guidelines
 

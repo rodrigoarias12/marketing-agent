@@ -10,13 +10,13 @@ Eddie Mission Control orchestrator. Routes your request to the right specialized
 
 ## Available Agents
 
-| Command | Agent | What it does |
-|---------|-------|-------------|
-| `/eddie-research` | Scout | Research a topic via web search + AI analysis |
-| `/eddie-content-writer` | Pixel | Generate posts from a topic, idea, or research |
-| `/eddie-publish` | Link | Publish approved content to LinkedIn/X |
-| `/eddie-prospects` | Pipeline | View/manage prospect pipeline and follow-ups |
-| `/eddie-dashboard` | UI | Start dashboard, show KPIs, open browser |
+| # | Command | Agent | What it does |
+|---|---------|-------|-------------|
+| 1 | `/eddie-1-research` | Scout | Research any topic via web search + AI analysis |
+| 2 | `/eddie-2-content-writer` | Pixel | Generate posts from a topic, idea, or research |
+| 3 | `/eddie-3-publish` | Link | Approve and publish content to LinkedIn/X |
+| — | `/eddie-prospects` | Pipeline | View/manage prospect pipeline and follow-ups |
+| — | `/eddie-dashboard` | UI | Start dashboard, show KPIs, open browser |
 
 ## Step 1: Ensure Server Running
 
@@ -29,9 +29,9 @@ curl -sf http://127.0.0.1:5679/api/health >/dev/null 2>&1 || "$(git rev-parse --
 Read the user's message and determine which agent to route to. DO NOT use keyword matching.
 Instead, understand the intent:
 
-- **Research/investigation/competitor analysis/market study** → invoke `/eddie-research` via the Skill tool
-- **Content creation/posts/drafts/write/generate** → invoke `/eddie-content-writer` via the Skill tool
-- **Publish/post to LinkedIn/Twitter/share/go live** → invoke `/eddie-publish` via the Skill tool
+- **Research/investigation/competitor analysis/market study** → invoke `/eddie-1-research` via the Skill tool
+- **Content creation/posts/drafts/write/generate** → invoke `/eddie-2-content-writer` via the Skill tool
+- **Publish/post to LinkedIn/Twitter/share/go live** → invoke `/eddie-3-publish` via the Skill tool
 - **Prospects/leads/pipeline/follow-up/outreach/CRM** → invoke `/eddie-prospects` via the Skill tool
 - **Dashboard/KPIs/metrics/open/show me/status** → invoke `/eddie-dashboard` via the Skill tool
 - **Anything else** → use Eddie Chat (Step 3)
@@ -62,17 +62,17 @@ After any action completes, suggest the logical next step:
 
 | After | Suggest |
 |-------|---------|
-| Research | "Run `/eddie-content-writer` to generate posts from these findings" |
-| Content | "Review the drafts, then `/eddie-publish` to go live" |
+| Research | "Next: `/eddie-2-content-writer` to generate posts from these findings" |
+| Content | "Next: review the drafts, then `/eddie-3-publish` to go live" |
 | Publish | "Check `/eddie-dashboard` for updated KPIs" |
-| Prospects | "Run `/eddie-research` on prospects' industries for targeted content" |
-| Dashboard | "All agents ready. Try `/eddie-research \"<topic>\"` to get started" |
+| Prospects | "Try `/eddie-1-research` on prospects' industries for targeted content" |
+| Dashboard | "All agents ready. Start with `/eddie-1-research \"<topic>\"`" |
 
 ## Examples
 
-- `/eddie research fintech AI in LATAM` → routes to /eddie-research
-- `/eddie generate 5 LinkedIn posts` → routes to /eddie-content
-- `/eddie publish today's posts` → routes to /eddie-publish
+- `/eddie research fintech AI in LATAM` → routes to /eddie-1-research
+- `/eddie generate 5 LinkedIn posts` → routes to /eddie-2-content-writer
+- `/eddie publish today's posts` → routes to /eddie-3-publish
 - `/eddie show me the pipeline` → routes to /eddie-prospects
 - `/eddie how many posts did we publish this week?` → uses Eddie Chat
 - `/eddie` (no args) → shows available commands and current status
