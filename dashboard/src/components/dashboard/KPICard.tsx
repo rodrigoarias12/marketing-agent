@@ -11,11 +11,11 @@ interface KPICardProps {
 export function KPICard({ icon, label, value, detail, accent }: KPICardProps) {
   return (
     <div className={`bg-surface border rounded-xl p-5 shadow-low ${
-      accent ? "border-green-darker/30 ring-1 ring-green-lighter/40" : "border-outline"
+      accent ? "border-violet-darker/30 ring-1 ring-violet-lighter/40" : "border-outline"
     }`}>
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-          accent ? "bg-green-lighter-ext text-green-darker-ext" : "bg-overlay text-el-mid"
+          accent ? "bg-violet-lighter-ext text-violet-darker-ext" : "bg-overlay text-el-mid"
         }`}>
           {icon}
         </div>

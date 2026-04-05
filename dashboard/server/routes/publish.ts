@@ -202,6 +202,57 @@ router.post("/", async (req, res) => {
         console.log(`[publish] Document uploaded: ${documentUrn}`);
       }
 
+      // Upload image if available (for non-carousel posts)
+      let imageUrn: string | null = null;
+      if (!documentUrn) {
+        try {
+          const { resolve } = await import("node:path");
+          const { readdir, readFile } = await import("node:fs/promises");
+          const { WORKSPACE } = await import("../db.js");
+          const imagesDir = resolve(WORKSPACE, "content", "images", date);
+          const files = await readdir(imagesDir).catch(() => [] as string[]);
+          const prefix = String(postNumber).padStart(2, "0");
+          const imageFile = files.find((f: string) => f.startsWith(prefix) && (f.endsWith(".png") || f.endsWith(".jpg")));
+
+          if (imageFile) {
+            const imagePath = resolve(imagesDir, imageFile);
+            console.log(`[publish] Uploading image: ${imagePath}`);
+
+            // Initialize image upload
+            const initResp = await fetch("https://api.linkedin.com/rest/images?action=initializeUpload", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+                "LinkedIn-Version": "202503",
+              },
+              body: JSON.stringify({ initializeUploadRequest: { owner: personUrn } }),
+            });
+
+            if (initResp.ok) {
+              const initData = (await initResp.json()) as { value: { uploadUrl: string; image: string } };
+              const imageBuffer = await readFile(imagePath);
+
+              const uploadResp = await fetch(initData.value.uploadUrl, {
+                method: "PUT",
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                  "Content-Type": "application/octet-stream",
+                },
+                body: imageBuffer,
+              });
+
+              if (uploadResp.ok) {
+                imageUrn = initData.value.image;
+                console.log(`[publish] Image uploaded: ${imageUrn}`);
+              }
+            }
+          }
+        } catch (imgErr: any) {
+          console.log(`[publish] Image upload skipped: ${imgErr.message}`);
+        }
+      }
+
       // Build LinkedIn post body
       const linkedInBody: Record<string, unknown> = {
         author: personUrn,
@@ -215,7 +266,7 @@ router.post("/", async (req, res) => {
         lifecycleState: "PUBLISHED",
       };
 
-      // Attach document if carousel was uploaded
+      // Attach document (carousel) or image
       if (documentUrn) {
         linkedInBody.content = {
           media: {
@@ -223,7 +274,19 @@ router.post("/", async (req, res) => {
             id: documentUrn,
           },
         };
+      } else if (imageUrn) {
+        linkedInBody.content = {
+          media: {
+            title: "",
+            id: imageUrn,
+          },
+        };
       }
+
+      // Log what we're sending
+      console.log(`[publish] Body length: ${postBody.length} chars`);
+      console.log(`[publish] Body preview: ${postBody.substring(0, 100)}...`);
+      console.log(`[publish] Has image: ${!!imageUrn}, Has document: ${!!documentUrn}`);
 
       // Call LinkedIn API to create post
       const resp = await fetch("https://api.linkedin.com/rest/posts", {
@@ -246,8 +309,8 @@ router.post("/", async (req, res) => {
       const postUrl = `https://www.linkedin.com/feed/update/${postId}`;
 
       db.prepare(
-        `UPDATE content_status SET status = 'published', published_at = datetime('now') WHERE date = ? AND post_number = ?`
-      ).run(date, postNumber);
+        `UPDATE content_status SET status = 'published', published_at = datetime('now'), published_url = ? WHERE date = ? AND post_number = ?`
+      ).run(postUrl, date, postNumber);
 
       const isCarousel = !!documentUrn;
       logActivity("publish", "content", `${date}-${postNumber}`, `Post ${postNumber} publicado en LinkedIn${isCarousel ? " (carousel)" : ""}: ${postUrl}`, { date, postNumber, platform, postUrl, isCarousel });

@@ -6,39 +6,39 @@
 
 @import "tailwindcss";
 
-/* ── Cueva Design System — Light Mode ── */
+/* ── Eddie Design System — Light Mode ── */
 @layer base {
   * { font-family: "Rethink Sans", sans-serif; }
 
   :root {
     --radius: 10px;
 
-    --green: #a0e099;
-    --green-darker: #83cc7a;
-    --green-darker-ext: #2c5227;
-    --green-lighter: rgba(131, 204, 122, 0.32);
-    --green-lighter-ext: rgba(131, 204, 122, 0.24);
-    --primary: var(--green);
+    --violet: #c099e0;
+    --violet-darker: #a47acc;
+    --violet-darker-ext: #3b2752;
+    --violet-lighter: rgba(164, 122, 204, 0.32);
+    --violet-lighter-ext: rgba(164, 122, 204, 0.24);
+    --primary: var(--violet);
 
-    --gradient-one: rgba(184, 255, 187, 0.32);
-    --gradient-two: rgba(209, 252, 255, 0.32);
-    --gradient-three: rgba(228, 252, 181, 0.32);
+    --gradient-one: rgba(210, 184, 255, 0.32);
+    --gradient-two: rgba(230, 209, 255, 0.32);
+    --gradient-three: rgba(220, 181, 252, 0.32);
 
-    --element-high: #20291f;
-    --element-high-hover: #435242;
-    --element-mid: #647063;
-    --element-low: #9ca89b;
-    --element-disabled: #aab8a9;
+    --element-high: #221f29;
+    --element-high-hover: #4a4252;
+    --element-mid: #686370;
+    --element-low: #a09ba8;
+    --element-disabled: #b0a9b8;
 
-    --outline: #dde5dc;
-    --outline-accent: #ced6ce;
+    --outline: #dfdce5;
+    --outline-accent: #d2ced6;
 
-    --overlay: #f0f5f0;
-    --overlay-accent: #e9f0e9;
+    --overlay: #f2f0f5;
+    --overlay-accent: #ebe9f0;
 
     --surface: #ffffff;
-    --surface-accent: #f8faf7;
-    --background: #f8faf7;
+    --surface-accent: #f9f7fa;
+    --background: #f9f7fa;
 
     --success-lighter-ext: rgba(0, 175, 117, 0.12);
     --success-lighter: #2dcc92;
@@ -61,16 +61,16 @@
     --error-base: #ed5a46;
     --error-dark: #da3d28;
 
-    --black: #20291f;
-    --white: #fdfffc;
-    --black-opacity-mid: rgba(32, 41, 31, 0.24);
-    --black-opacity-low: rgba(32, 41, 31, 0.12);
+    --black: #221f29;
+    --white: #fdfcff;
+    --black-opacity-mid: rgba(34, 31, 41, 0.24);
+    --black-opacity-low: rgba(34, 31, 41, 0.12);
 
-    --shadow-low: 0px 1px 2px 0px rgba(32, 41, 31, 0.08);
-    --shadow-mid: 0px 16px 32px -12px rgba(32, 41, 31, 0.06);
-    --shadow-high: 0px 20px 40px -8px rgba(32, 41, 31, 0.08);
+    --shadow-low: 0px 1px 2px 0px rgba(34, 31, 41, 0.08);
+    --shadow-mid: 0px 16px 32px -12px rgba(34, 31, 41, 0.06);
+    --shadow-high: 0px 20px 40px -8px rgba(34, 31, 41, 0.08);
 
-    --scrollbar-color: var(--green-darker);
+    --scrollbar-color: var(--violet-darker);
 
     /* Typography */
     --font-size-display-lg: 36px; --line-height-display-lg: 48px; --font-weight-display-lg: 500; --letter-spacing-display-lg: -0.02em;
@@ -119,11 +119,11 @@
 @theme {
   --font-sans: "Rethink Sans", sans-serif;
 
-  --color-green: var(--green);
-  --color-green-darker: var(--green-darker);
-  --color-green-darker-ext: var(--green-darker-ext);
-  --color-green-lighter: var(--green-lighter);
-  --color-green-lighter-ext: var(--green-lighter-ext);
+  --color-violet: var(--violet);
+  --color-violet-darker: var(--violet-darker);
+  --color-violet-darker-ext: var(--violet-darker-ext);
+  --color-violet-lighter: var(--violet-lighter);
+  --color-violet-lighter-ext: var(--violet-lighter-ext);
 
   --color-el-high: var(--element-high);
   --color-el-mid: var(--element-mid);
@@ -166,7 +166,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* ── Typography utility classes (Cueva) ── */
+/* ── Typography utility classes ── */
 @layer utilities {
   .display-lg { font-size: var(--font-size-display-lg); line-height: var(--line-height-display-lg); font-weight: var(--font-weight-display-lg); letter-spacing: var(--letter-spacing-display-lg); }
   .display-md { font-size: var(--font-size-display-md); line-height: var(--line-height-display-md); font-weight: var(--font-weight-display-md); letter-spacing: var(--letter-spacing-display-md); }
@@ -194,16 +194,16 @@
   .amount-md { font-size: var(--font-size-amount-md); line-height: var(--line-height-amount-md); font-weight: var(--font-weight-amount-md); letter-spacing: var(--letter-spacing-amount-md); }
   .amount-sm { font-size: var(--font-size-amount-sm); line-height: var(--line-height-amount-sm); font-weight: var(--font-weight-amount-sm); letter-spacing: var(--letter-spacing-amount-sm); }
 
-  .green-gradient { background: linear-gradient(93deg, var(--gradient-one) 0%, var(--gradient-two) 75.47%, var(--gradient-three) 100%); }
+  .violet-gradient { background: linear-gradient(93deg, var(--gradient-one) 0%, var(--gradient-two) 75.47%, var(--gradient-three) 100%); }
 
   .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--scrollbar-color) transparent; }
   .custom-scrollbar::-webkit-scrollbar { width: 4px; background: transparent; }
   .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
   .custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--scrollbar-color); border-radius: 4px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: var(--green); }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: var(--violet); }
 }
 
-/* ── Button system (Cueva — plain CSS) ── */
+/* ── Button system (plain CSS) ── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   border-radius: var(--radius); transition: all 200ms ease-out;
@@ -223,8 +223,8 @@
   --btn-border: var(--outline); --text-color: var(--surface);
 }
 .btn-primary, .btn-sm.btn-primary {
-  --btn-bg: var(--green-darker-ext); --btn-border: var(--green-darker-ext);
-  --btn-hover: var(--green-darker); --text-color: var(--white);
+  --btn-bg: var(--violet-darker-ext); --btn-border: var(--violet-darker-ext);
+  --btn-hover: var(--violet-darker); --text-color: var(--white);
 }
 .btn-danger, .btn-sm.btn-danger {
   --btn-bg: var(--error-base); --btn-border: var(--error-base);
@@ -241,4 +241,4 @@
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--outline-accent); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--green-darker); }
+::-webkit-scrollbar-thumb:hover { background: var(--violet-darker); }

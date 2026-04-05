@@ -152,7 +152,7 @@ export function ContentDashboard() {
 function SummaryCard({ label, value }: { label: string; value: number }) {
   return (
     <div className="bg-surface border border-outline rounded-xl p-4 text-center shadow-low">
-      <div className="amount-md text-green-darker-ext">{value}</div>
+      <div className="amount-md text-violet-darker-ext">{value}</div>
       <div className="overline-sm text-el-low uppercase mt-1 capitalize">{label}</div>
     </div>
   );
@@ -243,7 +243,7 @@ function DraftCard({ post, expanded, onToggle, onPublish, onApprove, onSaveEdit,
           {showCarousel ? (
             generatingCarousel ? (
               <div className="flex flex-col items-center justify-center py-16 gap-3">
-                <Loader2 className="w-8 h-8 animate-spin text-green-darker" />
+                <Loader2 className="w-8 h-8 animate-spin text-violet-darker" />
                 <p className="body-sm text-el-mid">Generando carousel...</p>
               </div>
             ) : carouselSlides ? (
@@ -266,7 +266,7 @@ function DraftCard({ post, expanded, onToggle, onPublish, onApprove, onSaveEdit,
                         <textarea
                           value={editBody}
                           onChange={(e) => setEditBody(e.target.value)}
-                          className="w-full bg-surface-accent border border-green-darker/40 rounded-md p-4 body-sm text-el-high resize-none min-h-[200px] max-h-80 focus:outline-none focus:ring-1 focus:ring-green-darker custom-scrollbar"
+                          className="w-full bg-surface-accent border border-violet-darker/40 rounded-md p-4 body-sm text-el-high resize-none min-h-[200px] max-h-80 focus:outline-none focus:ring-1 focus:ring-violet-darker custom-scrollbar"
                         />
                         <div className="flex gap-2">
                           <button onClick={saveEdit} className="btn-sm btn-primary contained">
@@ -324,7 +324,7 @@ function DraftCard({ post, expanded, onToggle, onPublish, onApprove, onSaveEdit,
               {/* Meta */}
               <div className="flex flex-wrap gap-2">
                 {post.pillar && (
-                  <span className="label-lg-w-semibold px-2.5 py-1 rounded-md bg-green-lighter-ext text-green-darker-ext border border-green-lighter">
+                  <span className="label-lg-w-semibold px-2.5 py-1 rounded-md bg-violet-lighter-ext text-violet-darker-ext border border-violet-lighter">
                     {post.pillar}
                   </span>
                 )}
@@ -336,7 +336,7 @@ function DraftCard({ post, expanded, onToggle, onPublish, onApprove, onSaveEdit,
               </div>
 
               {post.hashtags && (
-                <p className="label-lg text-green-darker flex items-center gap-1">
+                <p className="label-lg text-violet-darker flex items-center gap-1">
                   <Hash className="w-3 h-3" />{post.hashtags}
                 </p>
               )}
@@ -391,7 +391,7 @@ function DraftCard({ post, expanded, onToggle, onPublish, onApprove, onSaveEdit,
             {!showCarousel && (
               <button
                 onClick={() => setShowPreview(!showPreview)}
-                className={`btn-sm ${showPreview ? "outlined ring-1 ring-green-darker/30" : "ghost"}`}
+                className={`btn-sm ${showPreview ? "outlined ring-1 ring-violet-darker/30" : "ghost"}`}
               >
                 <Eye className="w-3.5 h-3.5" /> {showPreview ? "Hide Preview" : "Preview"}
               </button>
@@ -425,7 +425,7 @@ function DraftCard({ post, expanded, onToggle, onPublish, onApprove, onSaveEdit,
                   }
                 }}
                 disabled={generatingCarousel}
-                className={`btn-sm ${showCarousel ? "outlined ring-1 ring-green-darker/30" : "ghost"} disabled:opacity-50`}
+                className={`btn-sm ${showCarousel ? "outlined ring-1 ring-violet-darker/30" : "ghost"} disabled:opacity-50`}
               >
                 {generatingCarousel ? (
                   <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Generando...</>

@@ -65,7 +65,7 @@ export function GenerateContentModal({ onClose, onComplete }: {
       <div className="bg-surface border border-outline rounded-xl w-full max-w-lg p-6 space-y-4 shadow-high max-h-[85vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-green-darker" />
+            <Sparkles className="w-5 h-5 text-violet-darker" />
             <h3 className="title-lg text-el-high">Generar Contenido</h3>
           </div>
           <button onClick={onClose} className="text-el-low hover:text-el-high cursor-pointer"><X className="w-5 h-5" /></button>
@@ -74,7 +74,7 @@ export function GenerateContentModal({ onClose, onComplete }: {
         {result ? (
           <div className="space-y-4">
             <div className="text-center py-4">
-              <CheckCircle2 className="w-10 h-10 text-green-darker mx-auto mb-2" />
+              <CheckCircle2 className="w-10 h-10 text-violet-darker mx-auto mb-2" />
               <p className="title-sm text-el-high">{result.posts.length} posts generados</p>
               <p className="label-lg text-el-low mt-1">Para la fecha {date}</p>
             </div>
@@ -83,7 +83,7 @@ export function GenerateContentModal({ onClose, onComplete }: {
                 <div key={p.number} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-overlay">
                   <span className="label-md text-el-low">#{p.number}</span>
                   <span className="body-sm text-el-high">{p.type}</span>
-                  <span className="label-lg text-green-darker ml-auto">{p.platform}</span>
+                  <span className="label-lg text-violet-darker ml-auto">{p.platform}</span>
                 </div>
               ))}
             </div>
@@ -102,7 +102,7 @@ export function GenerateContentModal({ onClose, onComplete }: {
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
                   />
                 </div>
                 <div>
@@ -110,7 +110,7 @@ export function GenerateContentModal({ onClose, onComplete }: {
                   <select
                     value={postCount}
                     onChange={(e) => setPostCount(Number(e.target.value))}
-                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker cursor-pointer"
+                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker cursor-pointer"
                   >
                     {[1, 2, 3, 4, 5].map((n) => (
                       <option key={n} value={n}>{n}</option>
@@ -128,7 +128,7 @@ export function GenerateContentModal({ onClose, onComplete }: {
                       onClick={() => togglePlatform(p)}
                       className={`px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ${
                         platforms.includes(p)
-                          ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                          ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                           : "bg-overlay text-el-mid"
                       }`}
                     >
@@ -150,18 +150,18 @@ export function GenerateContentModal({ onClose, onComplete }: {
                       <label
                         key={r.id}
                         className={`flex items-start gap-2 px-3 py-2 rounded-lg cursor-pointer transition ${
-                          selected.has(r.id) ? "bg-green-lighter-ext/40" : "hover:bg-overlay"
+                          selected.has(r.id) ? "bg-violet-lighter-ext/40" : "hover:bg-overlay"
                         }`}
                       >
                         <input
                           type="checkbox"
                           checked={selected.has(r.id)}
                           onChange={() => toggleResearch(r.id)}
-                          className="accent-green-darker mt-0.5"
+                          className="accent-violet-darker mt-0.5"
                         />
                         <div className="flex-1 min-w-0">
                           <span className="body-sm text-el-high">{r.title}</span>
-                          {r.brandName && <span className="label-lg text-green-darker ml-2">{r.brandName}</span>}
+                          {r.brandName && <span className="label-lg text-violet-darker ml-2">{r.brandName}</span>}
                           {r.summary && <p className="label-lg text-el-low truncate">{r.summary}</p>}
                         </div>
                       </label>

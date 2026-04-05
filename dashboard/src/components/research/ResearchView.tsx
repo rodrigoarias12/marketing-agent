@@ -184,7 +184,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Buscar en resultados..."
-              className="w-full bg-surface border border-outline rounded-xl pl-10 pr-4 py-2.5 body-sm text-el-high placeholder:text-el-disabled focus:outline-none focus:ring-1 focus:ring-green-darker"
+              className="w-full bg-surface border border-outline rounded-xl pl-10 pr-4 py-2.5 body-sm text-el-high placeholder:text-el-disabled focus:outline-none focus:ring-1 focus:ring-violet-darker"
             />
             {searchQuery && (
               <button
@@ -205,7 +205,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
                   onClick={() => setFilterCategory(cat.value)}
                   className={`px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ${
                     filterCategory === cat.value
-                      ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                      ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                       : "text-el-mid hover:bg-overlay"
                   }`}
                 >
@@ -216,7 +216,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
             <select
               value={filterCampaign ?? ""}
               onChange={(e) => setFilterCampaign(e.target.value ? Number(e.target.value) : undefined)}
-              className="bg-surface border border-outline rounded-lg px-3 py-1.5 label-lg text-el-mid focus:outline-none focus:ring-1 focus:ring-green-darker cursor-pointer"
+              className="bg-surface border border-outline rounded-lg px-3 py-1.5 label-lg text-el-mid focus:outline-none focus:ring-1 focus:ring-violet-darker cursor-pointer"
             >
               <option value="">Todas las campanas</option>
               {campaigns.map((c) => (
@@ -242,7 +242,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
             {!searchQuery && (
               <button
                 onClick={() => setShowNewResearch(true)}
-                className="body-sm text-green-darker-ext hover:text-green-darker cursor-pointer"
+                className="body-sm text-violet-darker-ext hover:text-violet-darker cursor-pointer"
               >
                 Investigar un tema
               </button>
@@ -292,7 +292,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
           <div className="w-px h-5 bg-gray-600" />
           <button
             onClick={() => handleOpenGenerate()}
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-xl label-lg transition cursor-pointer"
+            className="flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-xl label-lg transition cursor-pointer"
           >
             <Sparkles className="w-4 h-4" />
             Generar contenido
@@ -316,7 +316,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
           >
             <div className="flex items-center justify-between">
               <h3 className="title-lg text-el-high flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-green-darker" />
+                <Sparkles className="w-5 h-5 text-violet-darker" />
                 Generar contenido
               </h3>
               <button
@@ -345,7 +345,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
                     onClick={() => setGeneratePlatform(opt.value)}
                     className={`px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ${
                       generatePlatform === opt.value
-                        ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                        ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                         : "text-el-mid hover:bg-overlay"
                     }`}
                   >
@@ -365,7 +365,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
                     onClick={() => setGeneratePostCount(n)}
                     className={`w-9 h-9 rounded-lg label-lg transition cursor-pointer ${
                       generatePostCount === n
-                        ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                        ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                         : "text-el-mid hover:bg-overlay"
                     }`}
                   >
@@ -382,7 +382,7 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
                 type="date"
                 value={generateDate}
                 onChange={(e) => setGenerateDate(e.target.value)}
-                className="w-full bg-surface-accent border border-outline rounded-lg px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                className="w-full bg-surface-accent border border-outline rounded-lg px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
               />
             </div>
 
@@ -416,14 +416,14 @@ export function ResearchView({ onNavigate }: { onNavigate?: (view: View) => void
       {/* ── Success Toast ── */}
       {showSuccessToast && (
         <div className="fixed top-6 right-6 z-50 flex items-center gap-3 bg-gray-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-gray-700/50 animate-in slide-in-from-top-2">
-          <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
+          <CheckCircle2 className="w-5 h-5 text-purple-400 shrink-0" />
           <span className="body-sm">Post generado exitosamente</span>
           <button
             onClick={() => {
               setShowSuccessToast(false);
               onNavigate?.("content");
             }}
-            className="flex items-center gap-1.5 bg-green-600 hover:bg-green-500 text-white px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ml-2"
+            className="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-500 text-white px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ml-2"
           >
             Ver en Content
             <ArrowRight className="w-3.5 h-3.5" />
@@ -465,7 +465,7 @@ function ResearchCard({ item, campaigns, expanded, selected, onToggleSelect, onT
   return (
     <div
       className={`bg-surface border rounded-xl shadow-low hover:shadow-mid transition-all ${
-        selected ? "border-green-darker ring-1 ring-green-darker/30" : expanded ? "border-green-darker/30" : "border-outline"
+        selected ? "border-violet-darker ring-1 ring-violet-darker/30" : expanded ? "border-violet-darker/30" : "border-outline"
       }`}
     >
       {/* Collapsed view - always visible */}
@@ -477,7 +477,7 @@ function ResearchCard({ item, campaigns, expanded, selected, onToggleSelect, onT
             className="mt-0.5 shrink-0 cursor-pointer"
           >
             {selected ? (
-              <CheckSquare className="w-4.5 h-4.5 text-green-darker" />
+              <CheckSquare className="w-4.5 h-4.5 text-violet-darker" />
             ) : (
               <Square className="w-4.5 h-4.5 text-el-disabled hover:text-el-mid transition" />
             )}
@@ -487,7 +487,7 @@ function ResearchCard({ item, campaigns, expanded, selected, onToggleSelect, onT
             <h4 className="title-sm text-el-high leading-snug">{item.title}</h4>
             <div className="flex items-center gap-2 mt-1 flex-wrap">
               {item.brandName && (
-                <span className="label-lg text-green-darker font-medium">{item.brandName}</span>
+                <span className="label-lg text-violet-darker font-medium">{item.brandName}</span>
               )}
               {item.category && item.category !== "general" && (
                 <span className="label-md px-2 py-0.5 rounded-md bg-overlay text-el-mid capitalize">
@@ -495,7 +495,7 @@ function ResearchCard({ item, campaigns, expanded, selected, onToggleSelect, onT
                 </span>
               )}
               {campaign && (
-                <span className="label-md px-2 py-0.5 rounded-md bg-green-lighter-ext/50 text-green-darker-ext">
+                <span className="label-md px-2 py-0.5 rounded-md bg-violet-lighter-ext/50 text-violet-darker-ext">
                   {campaign.name}
                 </span>
               )}
@@ -521,7 +521,7 @@ function ResearchCard({ item, campaigns, expanded, selected, onToggleSelect, onT
         {/* Tags + source (compact row) */}
         <div className="flex items-center gap-2 flex-wrap pl-[30px]">
           {item.tags && item.tags.split(",").slice(0, expanded ? 999 : 4).map((tag, i) => (
-            <span key={i} className="flex items-center gap-0.5 label-md px-2 py-0.5 rounded-md bg-green-lighter-ext text-green-darker-ext">
+            <span key={i} className="flex items-center gap-0.5 label-md px-2 py-0.5 rounded-md bg-violet-lighter-ext text-violet-darker-ext">
               <Tag className="w-2.5 h-2.5" />{tag.trim()}
             </span>
           ))}
@@ -593,7 +593,7 @@ function ResearchCard({ item, campaigns, expanded, selected, onToggleSelect, onT
           <div className="flex items-center gap-2 pt-2 border-t border-outline">
             <button
               onClick={(e) => { e.stopPropagation(); onLinkProspects(); }}
-              className="flex items-center gap-1.5 label-lg text-el-mid hover:text-green-darker px-3 py-1.5 rounded-lg hover:bg-overlay transition cursor-pointer"
+              className="flex items-center gap-1.5 label-lg text-el-mid hover:text-violet-darker px-3 py-1.5 rounded-lg hover:bg-overlay transition cursor-pointer"
             >
               <Link2 className="w-3.5 h-3.5" /> Vincular prospectos
             </button>
@@ -723,7 +723,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
         className="w-full flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-overlay/50 transition rounded-xl"
       >
         <div className="flex items-center gap-2">
-          <Plus className="w-4 h-4 text-green-darker" />
+          <Plus className="w-4 h-4 text-violet-darker" />
           <span className="title-sm text-el-high">Investigar nuevo tema</span>
         </div>
         {isOpen ? (
@@ -741,7 +741,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
               onClick={() => setMode("quick")}
               className={`px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ${
                 mode === "quick"
-                  ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                   : "text-el-mid hover:bg-overlay"
               }`}
             >
@@ -751,7 +751,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
               onClick={() => setMode("manual")}
               className={`px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ${
                 mode === "manual"
-                  ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                   : "text-el-mid hover:bg-overlay"
               }`}
             >
@@ -761,7 +761,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
               onClick={() => setMode("scout")}
               className={`px-3 py-1.5 rounded-lg label-lg transition cursor-pointer flex items-center gap-1.5 ${
                 mode === "scout"
-                  ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                   : "text-el-mid hover:bg-overlay"
               }`}
             >
@@ -782,7 +782,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={(e) => { if (e.key === "Enter") handleAgentRun(); }}
                     placeholder="Que queres investigar? ej: estrategia de Flexport en LinkedIn"
-                    className="flex-1 bg-surface-accent border border-outline rounded-lg px-4 py-2.5 body-sm text-el-high placeholder:text-el-disabled focus:outline-none focus:ring-1 focus:ring-green-darker"
+                    className="flex-1 bg-surface-accent border border-outline rounded-lg px-4 py-2.5 body-sm text-el-high placeholder:text-el-disabled focus:outline-none focus:ring-1 focus:ring-violet-darker"
                   />
                   <button
                     onClick={handleAgentRun}
@@ -801,10 +801,10 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                     {agentEvents.map((event, i) => (
                       <div key={i} className="flex items-start gap-2 py-0.5">
                         {event.phase === "searching" && <Search className="w-3.5 h-3.5 text-info-base mt-0.5 shrink-0" />}
-                        {event.phase === "saving" && <CheckCircle2 className="w-3.5 h-3.5 text-green-darker mt-0.5 shrink-0" />}
+                        {event.phase === "saving" && <CheckCircle2 className="w-3.5 h-3.5 text-violet-darker mt-0.5 shrink-0" />}
                         {event.phase === "starting" && <Loader2 className="w-3.5 h-3.5 text-el-low mt-0.5 shrink-0 animate-spin" />}
                         {event.phase === "error" && <AlertCircle className="w-3.5 h-3.5 text-error-base mt-0.5 shrink-0" />}
-                        {(event.phase === "complete" || event.phase === "done") && <CheckCircle2 className="w-3.5 h-3.5 text-green-darker mt-0.5 shrink-0" />}
+                        {(event.phase === "complete" || event.phase === "done") && <CheckCircle2 className="w-3.5 h-3.5 text-violet-darker mt-0.5 shrink-0" />}
                         <span className="label-lg text-el-mid">
                           {event.phase === "starting" && event.detail}
                           {event.phase === "searching" && `Buscando: ${event.detail}`}
@@ -817,7 +817,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                     ))}
                     {agentRunning && !agentDone && (
                       <div className="flex items-center gap-2 py-1">
-                        <Loader2 className="w-3.5 h-3.5 text-green-darker animate-spin" />
+                        <Loader2 className="w-3.5 h-3.5 text-violet-darker animate-spin" />
                         <span className="label-lg text-el-mid">Procesando...</span>
                       </div>
                     )}
@@ -832,7 +832,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                   {agentDone && (
                     <div className="space-y-3 pt-2 border-t border-outline">
                       <div className="flex items-center justify-between">
-                        <p className="label-lg text-green-darker">{savedCount} hallazgos guardados</p>
+                        <p className="label-lg text-violet-darker">{savedCount} hallazgos guardados</p>
                         <button
                           onClick={handleAgentFinished}
                           className="btn-primary contained px-4 py-1.5 rounded-lg label-lg cursor-pointer"
@@ -843,8 +843,8 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
 
                       {/* Post-research CTA: generate content from new findings */}
                       {newResearchIds.length > 0 && (
-                        <div className="flex items-center gap-3 bg-green-lighter-ext/30 border border-green-darker/20 rounded-lg px-4 py-3">
-                          <Sparkles className="w-4 h-4 text-green-darker shrink-0" />
+                        <div className="flex items-center gap-3 bg-violet-lighter-ext/30 border border-violet-darker/20 rounded-lg px-4 py-3">
+                          <Sparkles className="w-4 h-4 text-violet-darker shrink-0" />
                           <p className="body-sm text-el-mid flex-1">
                             Investigacion completada. Queres generar contenido con estos resultados?
                           </p>
@@ -853,7 +853,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                               handleAgentFinished();
                               onGenerateFromNew(newResearchIds);
                             }}
-                            className="flex items-center gap-1.5 bg-green-600 hover:bg-green-500 text-white px-3 py-1.5 rounded-lg label-lg transition cursor-pointer shrink-0"
+                            className="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-500 text-white px-3 py-1.5 rounded-lg label-lg transition cursor-pointer shrink-0"
                           >
                             <Sparkles className="w-3.5 h-3.5" />
                             Generar contenido
@@ -909,7 +909,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                 <input
                   value={manualForm.title}
                   onChange={(e) => setManualForm({ ...manualForm, title: e.target.value })}
-                  className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                  className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
                   placeholder="ej: Analisis de estrategia Flexport"
                 />
               </div>
@@ -919,7 +919,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                   <select
                     value={manualForm.category}
                     onChange={(e) => setManualForm({ ...manualForm, category: e.target.value })}
-                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker cursor-pointer"
+                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker cursor-pointer"
                   >
                     <option value="general">General</option>
                     <option value="competencia">Competencia</option>
@@ -933,7 +933,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                   <select
                     value={manualForm.campaignId ?? ""}
                     onChange={(e) => setManualForm({ ...manualForm, campaignId: e.target.value ? Number(e.target.value) : null })}
-                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker cursor-pointer"
+                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker cursor-pointer"
                   >
                     <option value="">Sin campana</option>
                     {campaigns.map((c) => (
@@ -946,7 +946,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                   <input
                     value={manualForm.brandName}
                     onChange={(e) => setManualForm({ ...manualForm, brandName: e.target.value })}
-                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
                   />
                 </div>
               </div>
@@ -956,7 +956,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                   <input
                     value={manualForm.tags}
                     onChange={(e) => setManualForm({ ...manualForm, tags: e.target.value })}
-                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
                     placeholder="logistica, AI, supply chain"
                   />
                 </div>
@@ -965,7 +965,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                   <input
                     value={manualForm.sourceUrl}
                     onChange={(e) => setManualForm({ ...manualForm, sourceUrl: e.target.value })}
-                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                    className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
                   />
                 </div>
               </div>
@@ -974,7 +974,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                 <textarea
                   value={manualForm.summary}
                   onChange={(e) => setManualForm({ ...manualForm, summary: e.target.value })}
-                  className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high placeholder:text-el-disabled resize-none h-16 focus:outline-none focus:ring-1 focus:ring-green-darker"
+                  className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high placeholder:text-el-disabled resize-none h-16 focus:outline-none focus:ring-1 focus:ring-violet-darker"
                 />
               </div>
               <div>
@@ -982,7 +982,7 @@ function NewResearchSection({ isOpen, onToggle, campaigns, onComplete, onGenerat
                 <textarea
                   value={manualForm.content}
                   onChange={(e) => setManualForm({ ...manualForm, content: e.target.value })}
-                  className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high placeholder:text-el-disabled resize-none h-24 focus:outline-none focus:ring-1 focus:ring-green-darker"
+                  className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high placeholder:text-el-disabled resize-none h-24 focus:outline-none focus:ring-1 focus:ring-violet-darker"
                   placeholder="Ideas, analisis, inspiracion para contenido..."
                 />
               </div>
@@ -1145,7 +1145,7 @@ function ScoutPanel({ onComplete }: { onComplete: () => void }) {
       {/* Scheduler Status Bar */}
       <div className="flex items-center justify-between bg-overlay rounded-lg px-4 py-3">
         <div className="flex items-center gap-3">
-          <Radar className="w-4 h-4 text-green-darker" />
+          <Radar className="w-4 h-4 text-violet-darker" />
           <div>
             <span className="label-lg text-el-high">
               Scout: {schedulerStatus?.active ? "activo" : "pausado"}
@@ -1162,7 +1162,7 @@ function ScoutPanel({ onComplete }: { onComplete: () => void }) {
           <select
             value={schedulerStatus?.intervalHours || 5}
             onChange={(e) => handleChangeInterval(Number(e.target.value))}
-            className="bg-surface border border-outline rounded-lg px-2 py-1 label-lg text-el-mid focus:outline-none focus:ring-1 focus:ring-green-darker cursor-pointer"
+            className="bg-surface border border-outline rounded-lg px-2 py-1 label-lg text-el-mid focus:outline-none focus:ring-1 focus:ring-violet-darker cursor-pointer"
           >
             {INTERVAL_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -1177,7 +1177,7 @@ function ScoutPanel({ onComplete }: { onComplete: () => void }) {
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ${
               schedulerStatus?.active
                 ? "bg-error-base/15 text-error-base hover:bg-error-base/25"
-                : "bg-green-lighter-ext text-green-darker-ext hover:bg-green-lighter-ext/80"
+                : "bg-violet-lighter-ext text-violet-darker-ext hover:bg-violet-lighter-ext/80"
             }`}
           >
             {schedulerStatus?.active ? (
@@ -1224,10 +1224,10 @@ function ScoutPanel({ onComplete }: { onComplete: () => void }) {
 
       {/* Run result */}
       {runResult && (
-        <div className="bg-green-lighter-ext/30 border border-green-darker/20 rounded-lg px-4 py-3 space-y-2">
+        <div className="bg-violet-lighter-ext/30 border border-violet-darker/20 rounded-lg px-4 py-3 space-y-2">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-green-darker" />
-            <span className="label-lg text-green-darker">
+            <CheckCircle2 className="w-4 h-4 text-violet-darker" />
+            <span className="label-lg text-violet-darker">
               {runResult.count} hallazgos nuevos guardados
             </span>
             <button
@@ -1273,12 +1273,12 @@ function ScoutPanel({ onComplete }: { onComplete: () => void }) {
             onChange={(e) => setNewTopic(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter") handleAddTopic(); }}
             placeholder='ej: "AI agents fintech LATAM", "competencia Mercado Pago"'
-            className="flex-1 bg-surface-accent border border-outline rounded-lg px-4 py-2 body-sm text-el-high placeholder:text-el-disabled focus:outline-none focus:ring-1 focus:ring-green-darker"
+            className="flex-1 bg-surface-accent border border-outline rounded-lg px-4 py-2 body-sm text-el-high placeholder:text-el-disabled focus:outline-none focus:ring-1 focus:ring-violet-darker"
           />
           <select
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
-            className="bg-surface-accent border border-outline rounded-lg px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker cursor-pointer"
+            className="bg-surface-accent border border-outline rounded-lg px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker cursor-pointer"
           >
             {TOPIC_CATEGORIES.map((c) => (
               <option key={c.value} value={c.value}>{c.label}</option>
@@ -1320,7 +1320,7 @@ function ScoutPanel({ onComplete }: { onComplete: () => void }) {
                   title={topic.enabled ? "Desactivar" : "Activar"}
                 >
                   {topic.enabled ? (
-                    <ToggleRight className="w-5 h-5 text-green-darker" />
+                    <ToggleRight className="w-5 h-5 text-violet-darker" />
                   ) : (
                     <ToggleLeft className="w-5 h-5 text-el-low" />
                   )}
@@ -1415,14 +1415,14 @@ function LinkProspectsModal({ researchId, onClose }: {
               <label
                 key={p.id}
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition ${
-                  selected.has(p.id) ? "bg-green-lighter-ext/40" : "hover:bg-overlay"
+                  selected.has(p.id) ? "bg-violet-lighter-ext/40" : "hover:bg-overlay"
                 }`}
               >
                 <input
                   type="checkbox"
                   checked={selected.has(p.id)}
                   onChange={() => toggle(p.id)}
-                  className="accent-green-darker"
+                  className="accent-violet-darker"
                 />
                 <div className="flex-1 min-w-0">
                   <span className="body-sm text-el-high">{p.name}</span>

@@ -4,7 +4,7 @@ import type { ActivityLogEntry } from "../../types";
 const TYPE_CONFIG: Record<string, { icon: typeof Users; color: string }> = {
   create: { icon: Plus, color: "text-success-base" },
   update: { icon: Pencil, color: "text-el-mid" },
-  followup: { icon: Send, color: "text-green-darker-ext" },
+  followup: { icon: Send, color: "text-violet-darker-ext" },
   approve: { icon: Check, color: "text-warning-base" },
   publish: { icon: Send, color: "text-success-base" },
 };

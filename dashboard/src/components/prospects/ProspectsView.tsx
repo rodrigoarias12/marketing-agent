@@ -80,7 +80,7 @@ export function ProspectsView() {
               onClick={() => setViewMode("pipeline")}
               className={`px-2.5 py-1.5 flex items-center gap-1 label-lg-w-md transition cursor-pointer ${
                 viewMode === "pipeline"
-                  ? "bg-green-lighter-ext text-green-darker-ext"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext"
                   : "text-el-mid hover:bg-overlay"
               }`}
             >
@@ -90,7 +90,7 @@ export function ProspectsView() {
               onClick={() => setViewMode("list")}
               className={`px-2.5 py-1.5 flex items-center gap-1 label-lg-w-md transition cursor-pointer ${
                 viewMode === "list"
-                  ? "bg-green-lighter-ext text-green-darker-ext"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext"
                   : "text-el-mid hover:bg-overlay"
               }`}
             >
@@ -118,7 +118,7 @@ export function ProspectsView() {
             <select
               value={campaignFilter ?? ""}
               onChange={(e) => setCampaignFilter(e.target.value ? Number(e.target.value) : undefined)}
-              className="bg-surface-accent border border-outline rounded-md px-2.5 py-1 label-lg-w-md text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker cursor-pointer"
+              className="bg-surface-accent border border-outline rounded-md px-2.5 py-1 label-lg-w-md text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker cursor-pointer"
             >
               <option value="">Todas</option>
               {campaigns.map((c) => (
@@ -229,7 +229,7 @@ function CampaignBadge({ campaignId, campaigns }: { campaignId: number | null; c
   const campaign = campaigns.find((c) => c.id === campaignId);
   if (!campaign) return null;
   return (
-    <span className="inline-flex px-2 py-0.5 rounded-full bg-green-lighter text-green-darker-ext label-md truncate max-w-[140px]">
+    <span className="inline-flex px-2 py-0.5 rounded-full bg-violet-lighter text-violet-darker-ext label-md truncate max-w-[140px]">
       {campaign.name}
     </span>
   );
@@ -251,7 +251,7 @@ function FilterTabs({ label, tabs, value, onChange }: {
             onClick={() => onChange(tab.value)}
             className={`px-2.5 py-1 rounded-md label-lg-w-md transition cursor-pointer ${
               value === tab.value
-                ? "bg-green-lighter-ext text-green-darker-ext"
+                ? "bg-violet-lighter-ext text-violet-darker-ext"
                 : "text-el-mid hover:bg-overlay hover:text-el-high"
             }`}
           >
@@ -266,9 +266,9 @@ function FilterTabs({ label, tabs, value, onChange }: {
 function MiniStat({ label, value, accent }: { label: string; value: number; accent?: boolean }) {
   return (
     <div className={`bg-surface border rounded-lg px-3 py-2 text-center shadow-low ${
-      accent && value > 0 ? "border-green-darker/40 bg-green-lighter/20" : "border-outline"
+      accent && value > 0 ? "border-violet-darker/40 bg-violet-lighter/20" : "border-outline"
     }`}>
-      <div className={`amount-sm ${accent && value > 0 ? "text-green-darker-ext" : "text-green-darker-ext"}`}>
+      <div className={`amount-sm ${accent && value > 0 ? "text-violet-darker-ext" : "text-violet-darker-ext"}`}>
         {value}
       </div>
       <div className="label-md text-el-low uppercase tracking-wider">{label}</div>
@@ -307,7 +307,7 @@ function AddProspectModal({ campaigns, onClose, onSave }: {
             <select
               value={form.campaignId ?? ""}
               onChange={(e) => setForm({ ...form, campaignId: e.target.value ? Number(e.target.value) : null })}
-              className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+              className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
             >
               <option value="">Sin campaña</option>
               {campaigns.map((c) => (
@@ -320,7 +320,7 @@ function AddProspectModal({ campaigns, onClose, onSave }: {
           placeholder="Notas..."
           value={form.notes}
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
-          className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high placeholder:text-el-disabled resize-none h-20 focus:outline-none focus:ring-1 focus:ring-green-darker"
+          className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high placeholder:text-el-disabled resize-none h-20 focus:outline-none focus:ring-1 focus:ring-violet-darker"
         />
         <button
           onClick={() => onSave(form)}
@@ -340,7 +340,7 @@ function Input({ label, value, onChange, full }: { label: string; value: string;
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+        className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
       />
     </div>
   );
@@ -353,7 +353,7 @@ function Select({ label, value, options, onChange }: { label: string; value: str
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+        className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
       >
         {options.map((o) => <option key={o} value={o}>{o}</option>)}
       </select>

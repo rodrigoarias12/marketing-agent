@@ -61,7 +61,7 @@ export function ResearchAgentPanel({ onClose, onComplete }: {
       <div className="bg-surface border border-outline rounded-xl w-full max-w-lg p-6 space-y-4 shadow-high max-h-[80vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Bot className="w-5 h-5 text-green-darker" />
+            <Bot className="w-5 h-5 text-violet-darker" />
             <h3 className="title-lg text-el-high">Research Agent</h3>
           </div>
           <button onClick={onClose} className="text-el-low hover:text-el-high cursor-pointer"><X className="w-5 h-5" /></button>
@@ -78,7 +78,7 @@ export function ResearchAgentPanel({ onClose, onComplete }: {
                   <p className="label-md text-el-low uppercase mb-1">Competidores a investigar</p>
                   <div className="flex flex-wrap gap-1.5">
                     {competitors.map((c) => (
-                      <span key={c.id} className="label-lg px-2.5 py-1 rounded-md bg-green-lighter-ext text-green-darker-ext">
+                      <span key={c.id} className="label-lg px-2.5 py-1 rounded-md bg-violet-lighter-ext text-violet-darker-ext">
                         {c.name}
                       </span>
                     ))}
@@ -117,10 +117,10 @@ export function ResearchAgentPanel({ onClose, onComplete }: {
               {events.map((event, i) => (
                 <div key={i} className="flex items-start gap-2 py-1">
                   {event.phase === "searching" && <Search className="w-3.5 h-3.5 text-info-base mt-0.5 shrink-0" />}
-                  {event.phase === "saving" && <CheckCircle2 className="w-3.5 h-3.5 text-green-darker mt-0.5 shrink-0" />}
+                  {event.phase === "saving" && <CheckCircle2 className="w-3.5 h-3.5 text-violet-darker mt-0.5 shrink-0" />}
                   {event.phase === "starting" && <Loader2 className="w-3.5 h-3.5 text-el-low mt-0.5 shrink-0 animate-spin" />}
                   {event.phase === "error" && <AlertCircle className="w-3.5 h-3.5 text-error-base mt-0.5 shrink-0" />}
-                  {(event.phase === "complete" || event.phase === "done") && <CheckCircle2 className="w-3.5 h-3.5 text-green-darker mt-0.5 shrink-0" />}
+                  {(event.phase === "complete" || event.phase === "done") && <CheckCircle2 className="w-3.5 h-3.5 text-violet-darker mt-0.5 shrink-0" />}
                   <span className="label-lg text-el-mid">
                     {event.phase === "starting" && event.detail}
                     {event.phase === "searching" && `Buscando: ${event.detail}`}
@@ -134,7 +134,7 @@ export function ResearchAgentPanel({ onClose, onComplete }: {
 
               {running && !done && (
                 <div className="flex items-center gap-2 py-2">
-                  <Loader2 className="w-4 h-4 text-green-darker animate-spin" />
+                  <Loader2 className="w-4 h-4 text-violet-darker animate-spin" />
                   <span className="body-sm text-el-mid">
                     {lastEvent?.phase === "searching" ? "Analizando resultados..." : "Procesando..."}
                   </span>
@@ -151,7 +151,7 @@ export function ResearchAgentPanel({ onClose, onComplete }: {
             {done && (
               <div className="space-y-3 pt-2 border-t border-outline">
                 <div className="text-center">
-                  <p className="title-sm text-green-darker">{savedCount} hallazgos guardados</p>
+                  <p className="title-sm text-violet-darker">{savedCount} hallazgos guardados</p>
                   <p className="label-lg text-el-low mt-1">Los resultados estan disponibles en la seccion Research</p>
                 </div>
                 <button

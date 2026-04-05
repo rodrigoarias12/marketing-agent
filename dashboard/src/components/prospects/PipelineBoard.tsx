@@ -34,13 +34,13 @@ export function PipelineBoard({ pipeline, onRefresh }: Props) {
             <div key={col.key} className="flex flex-col">
               {/* Column header */}
               <div className={`flex items-center justify-between px-3 py-2 rounded-t-lg border border-outline ${
-                col.accent ? "bg-green-lighter" : "bg-surface-accent"
+                col.accent ? "bg-violet-lighter" : "bg-surface-accent"
               }`}>
-                <span className={`label-lg-w-semibold ${col.accent ? "text-green-darker-ext" : "text-el-mid"}`}>
+                <span className={`label-lg-w-semibold ${col.accent ? "text-violet-darker-ext" : "text-el-mid"}`}>
                   {col.label}
                 </span>
                 <span className={`label-lg-w-semibold px-1.5 py-0.5 rounded-full text-xs ${
-                  col.accent ? "bg-green-darker-ext text-white" : "bg-overlay text-el-low"
+                  col.accent ? "bg-violet-darker-ext text-white" : "bg-overlay text-el-low"
                 }`}>
                   {items.length}
                 </span>
@@ -95,7 +95,7 @@ function PipelineCard({ prospect, isAccepted, onClick, onStatusChange }: {
       onClick={onClick}
       className={`bg-surface border rounded-lg p-3 cursor-pointer transition hover:shadow-mid group ${
         isAccepted
-          ? "border-green-darker/40 hover:border-green-darker"
+          ? "border-violet-darker/40 hover:border-violet-darker"
           : "border-outline hover:border-outline-accent"
       }`}
     >
@@ -135,7 +135,7 @@ function PipelineCard({ prospect, isAccepted, onClick, onStatusChange }: {
               e.stopPropagation();
               onClick();
             }}
-            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-green-lighter text-green-darker-ext label-md hover:bg-green-darker hover:text-white transition"
+            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-violet-lighter text-violet-darker-ext label-md hover:bg-violet-darker hover:text-white transition"
           >
             <Send className="w-3 h-3" /> Follow up
           </button>

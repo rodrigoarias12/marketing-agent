@@ -60,19 +60,19 @@ export function ContentCalendar({ dates, selectedDate, onSelectDate }: Props) {
               onClick={() => draft ? onSelectDate(iso) : undefined}
               className={`flex-1 flex flex-col items-center py-2 px-1 rounded-lg transition cursor-pointer ${
                 isSelected
-                  ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                   : draft
                     ? "bg-surface border border-outline hover:bg-overlay text-el-high"
                     : "text-el-disabled"
-              } ${isToday && !isSelected ? "ring-1 ring-green-lighter" : ""}`}
+              } ${isToday && !isSelected ? "ring-1 ring-violet-lighter" : ""}`}
               disabled={!draft}
             >
               <span className="label-md uppercase">{DAY_NAMES[day.getDay()]}</span>
-              <span className={`title-sm ${isSelected ? "text-green-darker-ext" : ""}`}>
+              <span className={`title-sm ${isSelected ? "text-violet-darker-ext" : ""}`}>
                 {day.getDate()}
               </span>
               {draft ? (
-                <span className={`label-md mt-0.5 ${isSelected ? "text-green-darker-ext" : "text-el-low"}`}>
+                <span className={`label-md mt-0.5 ${isSelected ? "text-violet-darker-ext" : "text-el-low"}`}>
                   {draft.postCount}p
                 </span>
               ) : (

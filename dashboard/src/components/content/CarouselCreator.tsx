@@ -132,12 +132,12 @@ export function CarouselCreator({
             onKeyDown={(e) => e.key === "Enter" && handleInstructionSubmit()}
             placeholder="Ej: 'Cambiá el titulo del slide 3', 'Sacá las palabras técnicas', 'Hacelo mas informal'..."
             disabled={regenerating}
-            className="flex-1 bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker disabled:opacity-50 placeholder:text-el-low/50"
+            className="flex-1 bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker disabled:opacity-50 placeholder:text-el-low/50"
           />
           <button
             onClick={handleInstructionSubmit}
             disabled={!instructions.trim() || regenerating}
-            className="px-3 py-2 bg-green-darker text-white rounded-md hover:bg-green-darker/90 disabled:opacity-40 transition flex items-center gap-1.5"
+            className="px-3 py-2 bg-violet-darker text-white rounded-md hover:bg-violet-darker/90 disabled:opacity-40 transition flex items-center gap-1.5"
           >
             {regenerating ? (
               <Loader2 className="w-4 h-4 animate-spin" />
@@ -154,7 +154,7 @@ export function CarouselCreator({
             value={introText}
             onChange={(e) => setIntroText(e.target.value)}
             placeholder="Texto que acompaña el carousel en LinkedIn..."
-            className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high resize-none h-20 focus:outline-none focus:ring-1 focus:ring-green-darker custom-scrollbar"
+            className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high resize-none h-20 focus:outline-none focus:ring-1 focus:ring-violet-darker custom-scrollbar"
           />
         </div>
 
@@ -199,14 +199,14 @@ export function CarouselCreator({
                 value={slide.title}
                 onChange={(e) => updateSlide(idx, "title", e.target.value)}
                 placeholder="Headline..."
-                className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high font-semibold focus:outline-none focus:ring-1 focus:ring-green-darker"
+                className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high font-semibold focus:outline-none focus:ring-1 focus:ring-violet-darker"
               />
               <textarea
                 value={slide.body}
                 onChange={(e) => updateSlide(idx, "body", e.target.value)}
                 placeholder="Contenido del slide..."
                 rows={2}
-                className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high resize-none focus:outline-none focus:ring-1 focus:ring-green-darker custom-scrollbar"
+                className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high resize-none focus:outline-none focus:ring-1 focus:ring-violet-darker custom-scrollbar"
               />
             </div>
           ))}

@@ -15,8 +15,8 @@ interface PendingActionsProps {
 export function PendingActions({ actions, onNavigate }: PendingActionsProps) {
   if (actions.length === 0) {
     return (
-      <div className="bg-green-lighter-ext/30 border border-green-lighter rounded-xl p-5 text-center">
-        <p className="body-sm-w-md text-green-darker-ext">Todo al día — no hay acciones pendientes</p>
+      <div className="bg-violet-lighter-ext/30 border border-violet-lighter rounded-xl p-5 text-center">
+        <p className="body-sm-w-md text-violet-darker-ext">Todo al día — no hay acciones pendientes</p>
       </div>
     );
   }

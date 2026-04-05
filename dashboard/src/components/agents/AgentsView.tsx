@@ -33,8 +33,8 @@ const AGENTS_META: AgentMeta[] = [
     id: "eddie", backendId: "eddie", name: "Eddie", role: "AI Strategy Lead",
     description: "Agente principal. Coordina campanas, genera contenido y gestiona operaciones desde Mission Control.",
     icon: Zap,
-    colors: { primary: "#4a7c59", secondary: "#2d5a3d", accent: "#8fbc8f" },
-    officeColor: 0x5b8a6e,
+    colors: { primary: "#7c5b8a", secondary: "#5a3d6b", accent: "#bc8fd4" },
+    officeColor: 0x7c5b8a,
     pixel: [
       ["", "", "", "2", "2", "2", "2", "", "", ""],
       ["", "", "2", "1", "1", "1", "1", "2", "", ""],
@@ -294,7 +294,7 @@ function CommandConsole({
         className="w-full flex items-center justify-between px-4 py-3 hover:bg-overlay/50 transition cursor-pointer"
       >
         <div className="flex items-center gap-2">
-          <Terminal className="w-4 h-4 text-green-darker-ext" />
+          <Terminal className="w-4 h-4 text-violet-darker-ext" />
           <span className="title-sm text-el-high">Eddie Command Console</span>
           {isProcessing && (
             <span className="label-md text-success-base flex items-center gap-1">
@@ -327,7 +327,7 @@ function CommandConsole({
           </div>
 
           <div className="flex items-center gap-2 p-3 border-t border-[#21262d] bg-[#0d1117]">
-            <span className="text-green-darker-ext font-mono text-sm">$</span>
+            <span className="text-violet-darker-ext font-mono text-sm">$</span>
             <input
               type="text"
               value={input}
@@ -340,7 +340,7 @@ function CommandConsole({
             <button
               onClick={handleSubmit}
               disabled={!input.trim() || isProcessing}
-              className="p-1.5 rounded-md text-el-low hover:text-green-darker-ext disabled:opacity-30 transition cursor-pointer"
+              className="p-1.5 rounded-md text-el-low hover:text-violet-darker-ext disabled:opacity-30 transition cursor-pointer"
             >
               <Send className="w-4 h-4" />
             </button>
@@ -465,7 +465,7 @@ export function AgentsView() {
               onClick={() => setTab("office")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md label-lg transition-all cursor-pointer ${
                 tab === "office"
-                  ? "bg-green-lighter-ext text-green-darker-ext shadow-sm"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext shadow-sm"
                   : "text-el-mid hover:text-el-high"
               }`}
             >
@@ -476,7 +476,7 @@ export function AgentsView() {
               onClick={() => setTab("cards")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md label-lg transition-all cursor-pointer ${
                 tab === "cards"
-                  ? "bg-green-lighter-ext text-green-darker-ext shadow-sm"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext shadow-sm"
                   : "text-el-mid hover:text-el-high"
               }`}
             >
@@ -527,7 +527,7 @@ export function AgentsView() {
                       className={`w-3 h-3 rounded-full shrink-0 ${status === "working" ? "animate-pulse" : ""}`}
                       style={{
                         backgroundColor: status === "idle"
-                          ? "#aab8a9"
+                          ? "#b0a9b8"
                           : meta.colors.primary,
                         opacity: status === "idle" ? 0.5 : 1,
                       }}

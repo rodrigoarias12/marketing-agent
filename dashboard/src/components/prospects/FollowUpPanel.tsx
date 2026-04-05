@@ -91,7 +91,7 @@ export function FollowUpPanel({ prospect, onClose, onRefresh }: Props) {
                   onClick={() => handleStatusChange(s)}
                   className={`px-3 py-1.5 rounded-md label-lg-w-semibold transition capitalize cursor-pointer ${
                     prospect.status === s
-                      ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/40"
+                      ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/40"
                       : "bg-overlay text-el-mid hover:bg-overlay-accent"
                   }`}
                 >
@@ -123,7 +123,7 @@ export function FollowUpPanel({ prospect, onClose, onRefresh }: Props) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Escribí el mensaje de follow-up..."
-                className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2.5 body-sm text-el-high placeholder:text-el-disabled resize-none h-32 focus:outline-none focus:ring-1 focus:ring-green-darker"
+                className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2.5 body-sm text-el-high placeholder:text-el-disabled resize-none h-32 focus:outline-none focus:ring-1 focus:ring-violet-darker"
               />
               <button
                 onClick={handleFollowUp}

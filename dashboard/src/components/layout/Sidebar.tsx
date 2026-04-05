@@ -21,9 +21,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
       {/* Logo */}
       <div className="p-5 border-b border-outline">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-green-lighter-ext flex items-center justify-center">
-            <Zap className="w-5 h-5 text-green-darker-ext" />
-          </div>
+          <img src="/eddie-logo.png" alt="Eddie" className="w-9 h-9 rounded-xl" />
           <div>
             <h1 className="title-md text-el-high leading-tight">Eddie</h1>
             <p className="label-lg text-el-low">Mission Control</p>
@@ -41,7 +39,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
               onClick={() => onNavigate(item.view)}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg body-sm-w-md transition-all duration-200 cursor-pointer
                 ${active
-                  ? "bg-green-lighter-ext text-green-darker-ext"
+                  ? "bg-violet-lighter-ext text-violet-darker-ext"
                   : "text-el-mid hover:bg-overlay hover:text-el-high"
                 }`}
             >

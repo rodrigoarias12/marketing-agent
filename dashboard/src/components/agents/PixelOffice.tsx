@@ -13,7 +13,7 @@ export interface OfficeAgent {
 
 // ── Default agents ──
 const DEFAULT_AGENTS: OfficeAgent[] = [
-  { id: "eddie", name: "Eddie", role: "AI Strategy Lead", status: "working", currentTask: "Coordinating campaigns", color: 0x5b8a6e },
+  { id: "eddie", name: "Eddie", role: "AI Strategy Lead", status: "working", currentTask: "Coordinating campaigns", color: 0x7c5b8a },
   { id: "scout", name: "Scout", role: "Research Agent", status: "working", currentTask: "Analyzing competitors", color: 0x5b7ea8 },
   { id: "pixel", name: "Pixel", role: "Content Creator", status: "active", currentTask: "Writing LinkedIn post", color: 0xc97b2a },
   { id: "link", name: "Link", role: "Publishing Agent", status: "idle", currentTask: "", color: 0x8b5ca8 },

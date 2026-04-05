@@ -127,8 +127,8 @@ export function ChatView() {
           {messages.length === 0 && (
             <div className="flex-1 flex items-center justify-center min-h-[60vh]">
               <div className="text-center space-y-4 max-w-md">
-                <div className="w-16 h-16 rounded-2xl bg-green-lighter-ext flex items-center justify-center mx-auto">
-                  <Bot className="w-8 h-8 text-green-darker-ext" />
+                <div className="w-16 h-16 rounded-2xl bg-violet-lighter-ext flex items-center justify-center mx-auto">
+                  <Bot className="w-8 h-8 text-violet-darker-ext" />
                 </div>
                 <h3 className="title-lg text-el-high">Hola, soy Eddie</h3>
                 <p className="body-sm text-el-mid">
@@ -161,8 +161,8 @@ export function ChatView() {
 
           {toolStatus && (
             <div className="flex items-center gap-2 px-4 py-2">
-              <Wrench className="w-3.5 h-3.5 text-green-darker-ext animate-pulse" />
-              <span className="label-lg text-green-darker-ext">{toolStatus}</span>
+              <Wrench className="w-3.5 h-3.5 text-violet-darker-ext animate-pulse" />
+              <span className="label-lg text-violet-darker-ext">{toolStatus}</span>
             </div>
           )}
 
@@ -179,7 +179,7 @@ export function ChatView() {
               onKeyDown={handleKeyDown}
               placeholder="Preguntale algo a Eddie..."
               rows={1}
-              className="flex-1 bg-surface-accent border border-outline rounded-xl px-4 py-3 body-sm text-el-high placeholder:text-el-disabled resize-none focus:outline-none focus:ring-1 focus:ring-green-darker max-h-32 custom-scrollbar"
+              className="flex-1 bg-surface-accent border border-outline rounded-xl px-4 py-3 body-sm text-el-high placeholder:text-el-disabled resize-none focus:outline-none focus:ring-1 focus:ring-violet-darker max-h-32 custom-scrollbar"
               style={{ minHeight: "48px" }}
               disabled={isStreaming}
             />
@@ -207,14 +207,14 @@ function MessageBubble({ message }: { message: ChatMessage }) {
   return (
     <div className={`flex gap-3 ${isUser ? "justify-end" : ""}`}>
       {!isUser && (
-        <div className="w-8 h-8 rounded-lg bg-green-lighter-ext flex items-center justify-center shrink-0 mt-1">
-          <Bot className="w-4 h-4 text-green-darker-ext" />
+        <div className="w-8 h-8 rounded-lg bg-violet-lighter-ext flex items-center justify-center shrink-0 mt-1">
+          <Bot className="w-4 h-4 text-violet-darker-ext" />
         </div>
       )}
 
       <div className={`max-w-[75%] rounded-xl px-4 py-3 ${
         isUser
-          ? "bg-green-lighter-ext text-green-darker-ext"
+          ? "bg-violet-lighter-ext text-violet-darker-ext"
           : "bg-surface border border-outline shadow-low"
       }`}>
         <div className={`body-sm whitespace-pre-wrap ${isUser ? "" : "text-el-high"}`}>

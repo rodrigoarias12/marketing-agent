@@ -57,12 +57,12 @@ export function ResearchConfigPanel({ onClose }: { onClose: () => void }) {
           <section>
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-green-darker" />
+                <Building2 className="w-4 h-4 text-violet-darker" />
                 <h4 className="title-sm text-el-high">Competidores</h4>
               </div>
               <button
                 onClick={() => setAddType("competitor")}
-                className="flex items-center gap-1 label-lg text-green-darker hover:text-green-darker-ext cursor-pointer"
+                className="flex items-center gap-1 label-lg text-violet-darker hover:text-violet-darker-ext cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" /> Agregar
               </button>
@@ -83,12 +83,12 @@ export function ResearchConfigPanel({ onClose }: { onClose: () => void }) {
           <section>
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <Lightbulb className="w-4 h-4 text-green-darker" />
+                <Lightbulb className="w-4 h-4 text-violet-darker" />
                 <h4 className="title-sm text-el-high">Temas de Industria</h4>
               </div>
               <button
                 onClick={() => setAddType("industry")}
-                className="flex items-center gap-1 label-lg text-green-darker hover:text-green-darker-ext cursor-pointer"
+                className="flex items-center gap-1 label-lg text-violet-darker hover:text-violet-darker-ext cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" /> Agregar
               </button>
@@ -116,7 +116,7 @@ export function ResearchConfigPanel({ onClose }: { onClose: () => void }) {
               <input
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                className="bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
                 placeholder={addType === "competitor" ? "ej: Bitso" : "ej: AI en logística"}
                 autoFocus
               />
@@ -124,7 +124,7 @@ export function ResearchConfigPanel({ onClose }: { onClose: () => void }) {
                 <input
                   value={form.url}
                   onChange={(e) => setForm({ ...form, url: e.target.value })}
-                  className="bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+                  className="bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
                   placeholder="URL (opcional): bitso.com"
                 />
               )}
@@ -132,7 +132,7 @@ export function ResearchConfigPanel({ onClose }: { onClose: () => void }) {
             <input
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+              className="w-full bg-surface-accent border border-outline rounded-md px-3 py-1.5 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
               placeholder="Descripcion breve (opcional)"
             />
             <div className="flex gap-2">
@@ -173,7 +173,7 @@ function ConfigCard({ config, onDelete, onToggle }: {
         )}
       </div>
       <button onClick={() => onToggle(config)} className="text-el-low hover:text-el-high cursor-pointer p-1">
-        {config.enabled ? <ToggleRight className="w-5 h-5 text-green-darker" /> : <ToggleLeft className="w-5 h-5" />}
+        {config.enabled ? <ToggleRight className="w-5 h-5 text-violet-darker" /> : <ToggleLeft className="w-5 h-5" />}
       </button>
       <button onClick={() => onDelete(config.id)} className="text-el-low hover:text-error-base cursor-pointer p-1">
         <Trash2 className="w-3.5 h-3.5" />

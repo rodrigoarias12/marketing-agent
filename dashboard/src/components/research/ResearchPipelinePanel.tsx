@@ -57,7 +57,7 @@ export function ResearchPipelinePanel({ onClose, onComplete }: {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Rocket className="w-5 h-5 text-green-darker" />
+            <Rocket className="w-5 h-5 text-violet-darker" />
             <h3 className="title-lg text-el-high">Research Pipeline</h3>
           </div>
           <div className="flex items-center gap-2">
@@ -180,7 +180,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
           <input
             value={niche}
             onChange={(e) => setNiche(e.target.value)}
-            className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+            className="w-full bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
             placeholder="e.g. AI-powered logistics, SaaS marketing tools"
           />
         </div>
@@ -193,7 +193,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
               value={competitorInput}
               onChange={(e) => setCompetitorInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addCompetitor(); } }}
-              className="flex-1 bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-green-darker"
+              className="flex-1 bg-surface-accent border border-outline rounded-md px-3 py-2 body-sm text-el-high focus:outline-none focus:ring-1 focus:ring-violet-darker"
               placeholder="Type a competitor name and press Enter"
             />
             <button
@@ -209,7 +209,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
               {competitors.map((c) => (
                 <span
                   key={c}
-                  className="inline-flex items-center gap-1 label-lg px-2.5 py-1 rounded-md bg-green-lighter-ext text-green-darker-ext"
+                  className="inline-flex items-center gap-1 label-lg px-2.5 py-1 rounded-md bg-violet-lighter-ext text-violet-darker-ext"
                 >
                   {c}
                   <button
@@ -234,7 +234,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
                 onClick={() => togglePlatform(p.value)}
                 className={`px-3 py-1.5 rounded-lg label-lg transition cursor-pointer ${
                   platforms.includes(p.value)
-                    ? "bg-green-lighter-ext text-green-darker-ext ring-1 ring-green-darker/30"
+                    ? "bg-violet-lighter-ext text-violet-darker-ext ring-1 ring-violet-darker/30"
                     : "bg-overlay text-el-mid hover:text-el-high"
                 }`}
               >
@@ -269,8 +269,8 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
           return (
             <div key={step} className="flex-1 flex flex-col items-center gap-1">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                isCompleted ? "bg-green-darker text-white" :
-                isActive ? "bg-green-lighter-ext text-green-darker ring-2 ring-green-darker" :
+                isCompleted ? "bg-violet-darker text-white" :
+                isActive ? "bg-violet-lighter-ext text-violet-darker ring-2 ring-violet-darker" :
                 "bg-overlay text-el-disabled"
               }`}>
                 {isCompleted ? (
@@ -292,7 +292,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
       {/* Progress bar */}
       <div className="w-full h-1.5 bg-overlay rounded-full mb-3 overflow-hidden">
         <div
-          className="h-full bg-green-darker rounded-full transition-all duration-500"
+          className="h-full bg-violet-darker rounded-full transition-all duration-500"
           style={{ width: `${currentProgress}%` }}
         />
       </div>
@@ -305,7 +305,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
             <div key={i} className="flex items-start gap-2 py-1">
               <Icon className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${
                 event.step === "error" ? "text-error-base" :
-                event.step === "complete" ? "text-green-darker" :
+                event.step === "complete" ? "text-violet-darker" :
                 "text-info-base"
               }`} />
               <span className="label-lg text-el-mid">{event.detail}</span>
@@ -314,7 +314,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
         })}
         {running && (
           <div className="flex items-center gap-2 py-2">
-            <Loader2 className="w-4 h-4 text-green-darker animate-spin" />
+            <Loader2 className="w-4 h-4 text-violet-darker animate-spin" />
             <span className="body-sm text-el-mid">Processing...</span>
           </div>
         )}
@@ -331,7 +331,7 @@ function NewRunForm({ onComplete }: { onComplete: () => void }) {
       {done && (
         <div className="space-y-3 pt-3 border-t border-outline mt-3">
           <div className="text-center">
-            <p className="title-sm text-green-darker">Pipeline Complete!</p>
+            <p className="title-sm text-violet-darker">Pipeline Complete!</p>
             <p className="label-lg text-el-low mt-1">Results saved to Research section</p>
           </div>
           {activeJobId && <JobResultsPreview jobId={activeJobId} />}
@@ -405,7 +405,7 @@ function JobResultsPreview({ jobId }: { jobId: number }) {
                   <div className="flex items-start justify-between gap-2">
                     <h5 className="label-lg text-el-high">{idea.title}</h5>
                     <div className="flex items-center gap-1 shrink-0">
-                      <span className="label-md px-1.5 py-0.5 rounded bg-green-lighter-ext text-green-darker-ext">
+                      <span className="label-md px-1.5 py-0.5 rounded bg-violet-lighter-ext text-violet-darker-ext">
                         {idea.format}
                       </span>
                       <span className="label-md px-1.5 py-0.5 rounded bg-overlay text-el-mid">
@@ -539,7 +539,7 @@ function JobDetailView({ jobId, onBack }: { jobId: number; onBack: () => void })
         </div>
         <div className="flex flex-wrap gap-1.5">
           {detail.competitors.map((c) => (
-            <span key={c} className="label-lg px-2 py-0.5 rounded-md bg-green-lighter-ext text-green-darker-ext">{c}</span>
+            <span key={c} className="label-lg px-2 py-0.5 rounded-md bg-violet-lighter-ext text-violet-darker-ext">{c}</span>
           ))}
         </div>
         <div className="flex gap-3 label-md text-el-low">
@@ -583,7 +583,7 @@ function JobDetailView({ jobId, onBack }: { jobId: number; onBack: () => void })
               <div className="flex items-start justify-between gap-2">
                 <h5 className="label-lg text-el-high">{idea.title}</h5>
                 <div className="flex items-center gap-1 shrink-0">
-                  <span className="label-md px-1.5 py-0.5 rounded bg-green-lighter-ext text-green-darker-ext">
+                  <span className="label-md px-1.5 py-0.5 rounded bg-violet-lighter-ext text-violet-darker-ext">
                     {idea.format}
                   </span>
                   <span className="label-md px-1.5 py-0.5 rounded bg-surface text-el-mid">
