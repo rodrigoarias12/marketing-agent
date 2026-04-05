@@ -13,7 +13,7 @@ Eddie Mission Control orchestrator. Routes your request to the right specialized
 | Command | Agent | What it does |
 |---------|-------|-------------|
 | `/eddie-research` | Scout | Research a topic via web search + AI analysis |
-| `/eddie-content` | Pixel | Generate posts from research findings |
+| `/eddie-content-writer` | Pixel | Generate posts from a topic, idea, or research |
 | `/eddie-publish` | Link | Publish approved content to LinkedIn/X |
 | `/eddie-prospects` | Pipeline | View/manage prospect pipeline and follow-ups |
 | `/eddie-dashboard` | UI | Start dashboard, show KPIs, open browser |
@@ -30,7 +30,7 @@ Read the user's message and determine which agent to route to. DO NOT use keywor
 Instead, understand the intent:
 
 - **Research/investigation/competitor analysis/market study** → invoke `/eddie-research` via the Skill tool
-- **Content creation/posts/drafts/write/generate** → invoke `/eddie-content` via the Skill tool
+- **Content creation/posts/drafts/write/generate** → invoke `/eddie-content-writer` via the Skill tool
 - **Publish/post to LinkedIn/Twitter/share/go live** → invoke `/eddie-publish` via the Skill tool
 - **Prospects/leads/pipeline/follow-up/outreach/CRM** → invoke `/eddie-prospects` via the Skill tool
 - **Dashboard/KPIs/metrics/open/show me/status** → invoke `/eddie-dashboard` via the Skill tool
@@ -62,7 +62,7 @@ After any action completes, suggest the logical next step:
 
 | After | Suggest |
 |-------|---------|
-| Research | "Run `/eddie-content` to generate posts from these findings" |
+| Research | "Run `/eddie-content-writer` to generate posts from these findings" |
 | Content | "Review the drafts, then `/eddie-publish` to go live" |
 | Publish | "Check `/eddie-dashboard` for updated KPIs" |
 | Prospects | "Run `/eddie-research` on prospects' industries for targeted content" |
