@@ -1,0 +1,135 @@
+#!/bin/bash
+# eddie-server: manage the Eddie Mission Control API server
+# Usage: eddie-server start|stop|status
+
+# Detect project root: walk up from this script until we find dashboard/server/index.ts
+find_project_root() {
+  local dir
+  # First: check if we're inside the marketing-agent repo
+  dir="$(cd "$(dirname "$0")" && git rev-parse --show-toplevel 2>/dev/null)"
+  if [ -n "$dir" ] && [ -f "$dir/dashboard/server/index.ts" ]; then
+    echo "$dir"
+    return 0
+  fi
+  # Fallback: check EDDIE_PROJECT_DIR env var
+  if [ -n "$EDDIE_PROJECT_DIR" ] && [ -f "$EDDIE_PROJECT_DIR/dashboard/server/index.ts" ]; then
+    echo "$EDDIE_PROJECT_DIR"
+    return 0
+  fi
+  # Fallback: check common locations
+  for candidate in \
+    "$HOME/Documents/GitHub/openclaw-team/workspaces/marketing-agent" \
+    "$(pwd)" \
+    "$(pwd)/.."; do
+    if [ -f "$candidate/dashboard/server/index.ts" ]; then
+      echo "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+EDDIE_ROOT="$(find_project_root)"
+if [ -z "$EDDIE_ROOT" ]; then
+  echo "ERROR: Could not find Eddie project directory."
+  echo "Set EDDIE_PROJECT_DIR to the marketing-agent root, or run from inside the repo."
+  exit 1
+fi
+
+EDDIE_DIR="$EDDIE_ROOT/dashboard"
+PID_FILE="/tmp/eddie-server.pid"
+LOG_FILE="/tmp/eddie-server.log"
+PORT=5679
+
+case "${1:-status}" in
+  start)
+    # Check if already running
+    if curl -sf "http://127.0.0.1:$PORT/api/health" >/dev/null 2>&1; then
+      echo "Eddie server already running on :$PORT"
+      exit 0
+    fi
+
+    # Check if port is in use by something else
+    if lsof -i ":$PORT" >/dev/null 2>&1; then
+      echo "ERROR: Port $PORT is in use by another process."
+      echo "Run: lsof -i :$PORT to see what's using it."
+      exit 1
+    fi
+
+    # Check dependencies
+    if [ ! -d "$EDDIE_DIR/node_modules" ]; then
+      echo "Installing dependencies..."
+      cd "$EDDIE_DIR" && pnpm install --silent 2>/dev/null || npm install --silent 2>/dev/null
+    fi
+
+    # Start server in background
+    cd "$EDDIE_DIR" && npx tsx server/index.ts > "$LOG_FILE" 2>&1 &
+    echo $! > "$PID_FILE"
+
+    # Wait for server to be ready (exponential backoff, max 15s)
+    echo -n "Starting Eddie server..."
+    for i in 1 2 3 4 5; do
+      sleep "$i"
+      if curl -sf "http://127.0.0.1:$PORT/api/health" >/dev/null 2>&1; then
+        echo " ready on :$PORT"
+        exit 0
+      fi
+      echo -n "."
+    done
+
+    echo ""
+    echo "ERROR: Server failed to start within 15 seconds."
+    echo "Check logs: cat $LOG_FILE"
+    echo ""
+    echo "Common fixes:"
+    echo "  1. Check Node version: node -v (need 22+)"
+    echo "  2. Install deps: cd $EDDIE_DIR && pnpm install"
+    echo "  3. Check .env: cp $EDDIE_ROOT/.env.example $EDDIE_ROOT/.env"
+    exit 1
+    ;;
+
+  stop)
+    if [ -f "$PID_FILE" ]; then
+      PID=$(cat "$PID_FILE")
+      if kill -0 "$PID" 2>/dev/null; then
+        kill "$PID" 2>/dev/null
+        echo "Eddie server stopped (PID $PID)"
+      else
+        echo "Eddie server was not running (stale PID file)"
+      fi
+      rm -f "$PID_FILE"
+    else
+      # Try to find and kill by port
+      PID=$(lsof -ti ":$PORT" 2>/dev/null)
+      if [ -n "$PID" ]; then
+        kill "$PID" 2>/dev/null
+        echo "Eddie server stopped (PID $PID)"
+      else
+        echo "Eddie server is not running"
+      fi
+    fi
+    ;;
+
+  status)
+    if curl -sf "http://127.0.0.1:$PORT/api/health" 2>/dev/null; then
+      echo ""
+      echo "Eddie server: running on :$PORT"
+      [ -f "$PID_FILE" ] && echo "PID: $(cat "$PID_FILE")"
+    else
+      echo "Eddie server: down"
+    fi
+    ;;
+
+  logs)
+    if [ -f "$LOG_FILE" ]; then
+      tail -50 "$LOG_FILE"
+    else
+      echo "No logs found at $LOG_FILE"
+    fi
+    ;;
+
+  *)
+    echo "Usage: eddie-server {start|stop|status|logs}"
+    exit 1
+    ;;
+esac

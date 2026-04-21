@@ -8,7 +8,10 @@ node_modules/
 .DS_Store
 .pi/
 .openclaw/
-.claude/
+
+# Claude settings (personal, not shared) — but DO share the skills
+.claude/*
+!.claude/skills/
 
 # Agent memory (session-specific)
 memory/
